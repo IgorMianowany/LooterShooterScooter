@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://3sgc6btonkax"]
+
+[ext_resource type="PackedScene" uid="uid://bjqbd2fixlqlx" path="res://player.tscn" id="1_f3sb7"]
+[ext_resource type="Texture2D" uid="uid://dscfmc1jsdynf" path="res://icon.svg" id="1_fj7yv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3sb7"]
+albedo_texture = ExtResource("1_fj7yv")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gv5m4"]
+size = Vector2(500, 500)
+
+[node name="World" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.14848, 0, 0, 0, 1, 0, 0, 0, 0.14848, 0.564631, -2.17387, -0.289322)
+material_override = SubResource("StandardMaterial3D_f3sb7")
+mesh = SubResource("PlaneMesh_gv5m4")
+
+[node name="Player" parent="." instance=ExtResource("1_f3sb7")]
