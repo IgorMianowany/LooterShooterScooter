@@ -1,13 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjqbd2fixlqlx"]
+[gd_scene load_steps=4 format=3 uid="uid://c3r7x5nnilava"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
-height = 1.96916
+[ext_resource type="PackedScene" uid="uid://cb7jkmm5jny8i" path="res://models/character_models/character-a.glb" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://xkheiw2w0x41" path="res://player.gd" id="2_onrkg"]
 
-[node name="Player" type="CharacterBody3D"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
+height = 3.0056
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00364, 0)
-shape = SubResource("CapsuleShape3D_sh265")
+[node name="Player" instance=ExtResource("1_4flbx")]
+script = ExtResource("2_onrkg")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57495, 0)
+[node name="character-a" parent="." index="0"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="torso" parent="character-a/root" index="2"]
+layers = 128
+
+[node name="head" parent="character-a/root/torso" index="2"]
+layers = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.40752, 0)
+shape = SubResource("CapsuleShape3D_onrkg")
+
+[node name="Camera3D" type="Camera3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0.156)
+cull_mask = 1048447
