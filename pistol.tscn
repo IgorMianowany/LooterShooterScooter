@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://t218voefpyow"]
+
+[ext_resource type="PackedScene" uid="uid://baeydratbk1u0" path="res://weapon.tscn" id="1_08c3m"]
+[ext_resource type="PackedScene" uid="uid://c0tcpbkoxywqv" path="res://models/weapons/Gun.glb" id="2_bttkv"]
+
+[node name="Pistol" instance=ExtResource("1_08c3m")]
+
+[node name="Gun" parent="." index="0" instance=ExtResource("2_bttkv")]
+transform = Transform3D(-0.1, 0, -8.74228e-09, 0, 0.1, 0, 8.74228e-09, 0, -0.1, 0, 0, 0)

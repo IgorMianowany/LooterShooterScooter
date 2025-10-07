@@ -4,8 +4,8 @@ extends CharacterBody3D
 const TILT_LOWER_LIMIT := deg_to_rad(-90.0)
 const TILT_UPPER_LIMIT := deg_to_rad(90.0)
 
-var speed : float = 100
-const JUMP_VELOCITY = 4.5
+var speed : float = 30
+var jump_velocity = 20
 var mouse_input : bool = false
 var mouse_rotation : Vector3
 var rotation_input : float
@@ -25,12 +25,15 @@ func _exit():
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		if velocity.y >= 0:
+			velocity += get_gravity() * 2.5 * delta
+		else:
+			velocity += get_gravity() * delta * 4
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = jump_velocity
+		
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_direction = Input.get_vector("left", "right", "forward", "backward")
@@ -42,8 +45,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
 	
-	
-	_update_camera(delta)
+	update_camera(delta)
 	move_and_slide()
 	
 func _unhandled_input(event):
@@ -55,7 +57,7 @@ func _unhandled_input(event):
 		_exit()
 
 
-func _update_camera(delta):
+func update_camera(delta):
 	
 	mouse_rotation.x += tilt_input * delta
 	mouse_rotation.x = clamp(mouse_rotation.x, TILT_LOWER_LIMIT, TILT_UPPER_LIMIT)
