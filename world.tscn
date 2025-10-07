@@ -13,10 +13,11 @@ size = Vector2(500, 500)
 [sub_resource type="BoxShape3D" id="BoxShape3D_aqk2v"]
 size = Vector3(35.4792, 1, 31.3713)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tlwt5"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_tlwt5"]
 size = Vector3(0.9978, 1.00031, 1.02306)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tlwt5"]
+albedo_color = Color(0.129412, 1, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_tlwt5"]
 
@@ -45,7 +46,6 @@ shape = SubResource("BoxShape3D_aqk2v")
 
 [node name="Wall" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.3, 0, 0, 0, -8.8603e-08, -0.3, 0, 2.027, -1.31134e-08, 0.0424728, 0.40754, -75.0525)
-material_override = SubResource("StandardMaterial3D_tlwt5")
 mesh = SubResource("PlaneMesh_gv5m4")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Wall"]
@@ -56,7 +56,6 @@ shape = SubResource("BoxShape3D_tlwt5")
 
 [node name="Wall2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.3, -1.77206e-07, 1.14641e-15, 0, -8.8603e-08, -0.3, 2.62268e-08, -2.027, 1.31134e-08, -0.0539438, 0.339559, 74.5353)
-material_override = SubResource("StandardMaterial3D_tlwt5")
 mesh = SubResource("PlaneMesh_gv5m4")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Wall2"]
@@ -67,7 +66,6 @@ shape = SubResource("BoxShape3D_tlwt5")
 
 [node name="Wall3" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1.31134e-08, 2.027, -1.31134e-08, 0, -8.8603e-08, -0.3, -0.3, -8.8603e-08, 5.73206e-16, -75.0733, 0.339559, -0.31115)
-material_override = SubResource("StandardMaterial3D_tlwt5")
 mesh = SubResource("PlaneMesh_gv5m4")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Wall3"]
@@ -77,8 +75,7 @@ transform = Transform3D(33, 0, 0, 0, 33, 0, 0, 0, 33, -0.80104, -16.5664, 2.7678
 shape = SubResource("BoxShape3D_tlwt5")
 
 [node name="Wall4" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1.31405e-08, -2.03118, 1.31405e-08, 0, -8.87857e-08, -0.300619, 0.300619, -8.87857e-08, 5.74387e-16, 75.067, 0.588175, -1.40635)
-material_override = SubResource("StandardMaterial3D_tlwt5")
+transform = Transform3D(-1.31405e-08, -2.03118, 1.31405e-08, 0, -8.87857e-08, -0.300619, 0.300619, -8.87857e-08, 5.74387e-16, 75.067, 0.588175, -0.361251)
 mesh = SubResource("PlaneMesh_gv5m4")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Wall4"]
@@ -91,7 +88,7 @@ shape = SubResource("BoxShape3D_tlwt5")
 transform = Transform3D(-1.31405e-08, -2.03118, 1.31405e-08, 0, -8.87857e-08, -0.300619, 0.300619, -8.87857e-08, 5.74387e-16, 75.067, 0.588175, -1.40635)
 
 [node name="Platform1" type="MeshInstance3D" parent="Platform"]
-transform = Transform3D(14.9612, -1.55043e-13, 3.11735e-21, -1.99323e-14, 1.81837, 6.53756e-15, 6.33632e-21, 1.55043e-13, 7.36064, 62.497, 15.5086, -2.61726)
+transform = Transform3D(14.9612, -2.84217e-13, 6.77626e-21, -3.55271e-14, 1.81837, 1.42109e-14, 1.01644e-20, 2.84217e-13, 7.36064, 62.701, 15.5013, -3.01565)
 material_override = SubResource("StandardMaterial3D_tlwt5")
 mesh = SubResource("BoxMesh_tlwt5")
 skeleton = NodePath("../..")

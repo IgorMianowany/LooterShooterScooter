@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b24gmq2074ord"]
+
+[ext_resource type="PackedScene" uid="uid://cxfl200titaiy" path="res://models/Blaster and stuff/bullet-foam-tip.glb" id="1_v7oki"]
+
+[node name="Bullet" instance=ExtResource("1_v7oki")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)

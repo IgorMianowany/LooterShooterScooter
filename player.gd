@@ -15,6 +15,10 @@ var camera_rotation : Vector3
 
 @export var camera_controller : Camera3D
 @export var mouse_sensitivity : float = 0.15
+@export var weapon : Weapon
+
+signal start_walking
+signal stop_walking
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -39,14 +43,28 @@ func _physics_process(delta: float) -> void:
 	var input_direction = Input.get_vector("left", "right", "forward", "backward")
 	var direction := (transform.basis * Vector3(input_direction.x, 0, input_direction.y)).normalized()
 	if direction:
+		$AnimationPlayer.play("walk")
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
+	if velocity.x == 0 and velocity.z == 0:
+		$AnimationPlayer.stop()
 	
+	if Input.is_action_pressed("shoot"):
+		weapon.start_shooting.emit()
+		shoot()
+		
+	if Input.is_action_just_released("shoot"):
+		weapon.stop_shooting.emit()
+		
 	update_camera(delta)
 	move_and_slide()
+	
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("reload"):
+		reload()
 	
 func _unhandled_input(event):
 	mouse_input = event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED
@@ -55,7 +73,6 @@ func _unhandled_input(event):
 		tilt_input = -event.relative.y * mouse_sensitivity
 	if event.is_action_pressed("exit"):
 		_exit()
-
 
 func update_camera(delta):
 	
@@ -73,3 +90,12 @@ func update_camera(delta):
 	
 	rotation_input = 0.0
 	tilt_input = 0.0
+func shoot():
+	$Camera3D/WeaponsBackpack.weapon_1._shoot()
+	weapon._shoot()
+
+func reload():
+	weapon._reload()
+	
+	
+	
