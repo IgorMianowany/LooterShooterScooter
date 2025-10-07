@@ -1,6 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://b24gmq2074ord"]
+[gd_scene load_steps=5 format=3 uid="uid://b24gmq2074ord"]
 
 [ext_resource type="PackedScene" uid="uid://cxfl200titaiy" path="res://models/Blaster and stuff/bullet-foam-tip.glb" id="1_v7oki"]
+[ext_resource type="Script" uid="uid://cqe7i3i4du872" path="res://bullet.gd" id="2_t4vbm"]
+[ext_resource type="Script" uid="uid://erenfrs60nsh" path="res://hitbox.gd" id="2_v8qja"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v7oki"]
+radius = 0.0148427
+height = 0.0694954
 
 [node name="Bullet" instance=ExtResource("1_v7oki")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(15, 0, 0, 0, -6.55671e-07, 15, 0, -15, -6.55671e-07, 0, 0, 0)
+script = ExtResource("2_t4vbm")
+
+[node name="Hitbox" type="Area3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24242e-10, -0.00284234, -0.00024116)
+collision_layer = 256
+collision_mask = 0
+monitoring = false
+script = ExtResource("2_v8qja")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46797e-09, 0.0335833, 0)
+shape = SubResource("CapsuleShape3D_v7oki")

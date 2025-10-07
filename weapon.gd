@@ -2,6 +2,7 @@ class_name Weapon
 extends Node3D
 
 var active : bool = false
+var bullet_spawn : Marker3D
 
 signal start_shooting
 signal stop_shooting

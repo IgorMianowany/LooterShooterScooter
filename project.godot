@@ -61,3 +61,5 @@ reload={
 [layer_names]
 
 3d_render/layer_8="Player"
+3d_physics/layer_9="hitbox"
+3d_physics/layer_10="hurtbox"
