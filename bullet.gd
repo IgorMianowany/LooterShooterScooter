@@ -9,7 +9,7 @@ var direction : Vector3
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	set_as_top_level(true)
-	direction = $Base.global_position.direction_to($Tip.global_position)
+	direction = global_position.direction_to($Tip.global_position)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
