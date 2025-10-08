@@ -38,9 +38,10 @@ shape = SubResource("CapsuleShape3D_onrkg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, -0.40251)
 cull_mask = 1048319
 
-[node name="WeaponsBackpack" type="Node3D" parent="Camera3D" index="0"]
+[node name="WeaponsBackpack" type="Node3D" parent="Camera3D" index="0" node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.265474, -0.576243, -0.394412)
 script = ExtResource("3_2hs0m")
+player = NodePath("../..")
 
 [node name="Pistol" parent="Camera3D/WeaponsBackpack" index="0" instance=ExtResource("5_2hs0m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

@@ -12,5 +12,5 @@ script = ExtResource("2_6e3nq")
 transform = Transform3D(-0.1, 0, -8.74228e-09, 0, 0.1, 0, 8.74228e-09, 0, -0.1, 0, 0, 0)
 
 [node name="Marker3D" type="Marker3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0297805, 0.208566, -1.05789)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.22007e-09, 0.2, -1.05971)
 gizmo_extents = 1.06

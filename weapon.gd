@@ -3,6 +3,7 @@ extends Node3D
 
 var active : bool = false
 var bullet_spawn : Marker3D
+var player : Player
 
 signal start_shooting
 signal stop_shooting

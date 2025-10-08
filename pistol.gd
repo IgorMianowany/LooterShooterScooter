@@ -14,7 +14,7 @@ func _shoot():
 		shot = true
 		var bullet : Bullet = bullet_scene.instantiate()
 		add_child(bullet)
-		bullet.direction = Vector3(0, bullet_spawn.global_position.y, 0).direction_to(bullet_spawn.global_position)
+		#bullet.direction = Vector3.FORWARD * player.rotation
 		bullet.global_position = bullet_spawn.global_position
 		
 
