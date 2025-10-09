@@ -8,9 +8,8 @@
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 script = ExtResource("2_6e3nq")
 
-[node name="Gun" parent="." index="0" instance=ExtResource("2_bttkv")]
-transform = Transform3D(-0.1, 0, -8.74228e-09, 0, 0.1, 0, 8.74228e-09, 0, -0.1, 0, 0, 0)
+[node name="GunModel" parent="." index="0" instance=ExtResource("2_bttkv")]
+transform = Transform3D(-0.1, 0, 8.742278e-09, 0, 0.1, 0, -8.742278e-09, 0, -0.1, 0, 0, 0)
 
-[node name="Marker3D" type="Marker3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.22007e-09, 0.2, -1.05971)
-gizmo_extents = 1.06
+[node name="BulletSpawn" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, -1.06)

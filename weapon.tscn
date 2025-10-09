@@ -4,3 +4,5 @@
 
 [node name="Weapon" type="Node3D"]
 script = ExtResource("1_swcir")
+
+[node name="BulletSpawn" type="Marker3D" parent="."]
