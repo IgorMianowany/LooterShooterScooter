@@ -35,3 +35,6 @@ func animate_recoil():
 	var tween = get_tree().create_tween()
 	tween.tween_property($GunModel, "transform", Transform3D($GunModel.transform).rotated(Vector3(1,0,0).normalized(), deg_to_rad(45) + $GunModel.rotation.x), .1)
 	tween.tween_property($GunModel, "transform", original_transform, .2)
+	
+func _reload():
+	print("reloading")

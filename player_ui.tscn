@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://o1yl32ljhypt"]
+[gd_scene load_steps=3 format=3 uid="uid://o1yl32ljhypt"]
 
+[ext_resource type="Script" uid="uid://cc6itckemlmc5" path="res://player_ui.gd" id="1_5m0x8"]
 [ext_resource type="Texture2D" uid="uid://b1uetiius72s8" path="res://crosshair.png" id="1_lwipk"]
 
 [node name="PlayerUI" type="Control"]
@@ -10,6 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("1_5m0x8")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -26,3 +28,20 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_lwipk")
 expand_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -197.0
+offset_top = -95.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "asdasdasd"

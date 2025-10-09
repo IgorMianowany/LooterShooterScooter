@@ -26,6 +26,9 @@ func _ready():
 func _exit():
 	get_tree().quit()
 	
+func _process(_delta: float) -> void:
+	$PlayerUI.set_ammo(weapon._get_current_magazine_size(), weapon._get_max_magazine_size(), weapon._get_ammo_reserve())
+	
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
