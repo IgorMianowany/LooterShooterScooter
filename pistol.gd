@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 		handle_stop_shooting()
 
 func _shoot():
-	if not shot and current_magazine_size > 0:
+	if not is_reloading and not shot and current_magazine_size > 0:
 		current_magazine_size -= 1
 		cooldown = cooldown_time
 		animate_recoil()
@@ -40,7 +40,12 @@ func animate_recoil():
 	tween.tween_property($GunModel, "transform", original_transform, .2)
 	
 func _reload():
+	if is_reloading:
+		return
+	is_reloading = true
+	await(get_tree().create_timer(reload_time).timeout)
 	var amount_to_take = max_magazine_size - current_magazine_size
 	var amount_taken = amount_to_take if ammo_reserve > amount_to_take else ammo_reserve
 	ammo_reserve -= amount_taken
 	current_magazine_size += amount_taken
+	is_reloading = false

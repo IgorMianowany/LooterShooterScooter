@@ -27,7 +27,7 @@ func _exit():
 	get_tree().quit()
 	
 func _process(_delta: float) -> void:
-	$PlayerUI.set_ammo(weapon._get_current_magazine_size(), weapon._get_max_magazine_size(), weapon._get_ammo_reserve())
+	$PlayerUI.set_ammo(weapon._get_current_magazine_size(), weapon._get_max_magazine_size(), weapon._get_ammo_reserve(), weapon.is_reloading)
 	
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

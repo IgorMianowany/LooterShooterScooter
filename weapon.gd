@@ -7,6 +7,8 @@ var player : Player
 var current_magazine_size : int = 5
 var max_magazine_size : int = 10
 var ammo_reserve : int = 50
+var is_reloading : bool = false
+var reload_time : float = 1
 
 signal start_shooting
 signal stop_shooting
