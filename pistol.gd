@@ -12,6 +12,8 @@ func _ready() -> void:
 	active = true
 	bullet_spawn = $BulletSpawn
 	original_transform = $GunModel.transform
+	current_magazine_size = max_magazine_size
+	ammo_reserve = 100
 	
 func _process(delta: float) -> void:
 	cooldown -= delta
@@ -19,7 +21,8 @@ func _process(delta: float) -> void:
 		handle_stop_shooting()
 
 func _shoot():
-	if not shot:
+	if not shot and current_magazine_size > 0:
+		current_magazine_size -= 1
 		cooldown = cooldown_time
 		animate_recoil()
 		shot = true
@@ -37,4 +40,7 @@ func animate_recoil():
 	tween.tween_property($GunModel, "transform", original_transform, .2)
 	
 func _reload():
-	print("reloading")
+	var amount_to_take = max_magazine_size - current_magazine_size
+	var amount_taken = amount_to_take if ammo_reserve > amount_to_take else ammo_reserve
+	ammo_reserve -= amount_taken
+	current_magazine_size += amount_taken
