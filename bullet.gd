@@ -2,7 +2,7 @@ class_name Bullet
 extends Node3D
 
 var lifetime : float = 5
-var speed : float = 100
+var speed : float = 150
 var direction : Vector3 
 
 
