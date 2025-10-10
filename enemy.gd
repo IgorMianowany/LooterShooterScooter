@@ -2,6 +2,7 @@ class_name Enemy
 extends Node3D
 
 var health : float = 100
+var max_health : float = 100
 
 func _ready() -> void:
 	$SubViewport/TextureProgressBar.max_value = health

@@ -12,6 +12,7 @@ var rotation_input : float
 var tilt_input : float
 var player_rotation : Vector3
 var camera_rotation : Vector3
+var aimed_at_enemy : Enemy = null
 
 @export var camera_controller : Camera3D
 @export var mouse_sensitivity : float = 0.15
@@ -61,7 +62,9 @@ func _physics_process(delta: float) -> void:
 		
 	if Input.is_action_just_released("shoot"):
 		weapon.stop_shooting.emit()
-		
+	
+	$PlayerUI.currently_targeted_enemy = $Camera3D/RayCast3D.get_collider()
+	
 	update_camera(delta)
 	move_and_slide()
 	

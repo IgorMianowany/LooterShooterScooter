@@ -47,8 +47,7 @@ player = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D" index="1"]
-transform = Transform3D(-1, 8.742278e-08, 0, 3.821371e-15, 4.371139e-08, 1, 8.742278e-08, 1, -4.371139e-08, 0, 0, 0)
-target_position = Vector3(0, -100, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.37319875, 0.40251)
 collision_mask = 128
 collide_with_areas = true
 collide_with_bodies = false

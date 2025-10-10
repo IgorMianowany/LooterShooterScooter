@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://o1yl32ljhypt"]
+[gd_scene load_steps=6 format=3 uid="uid://o1yl32ljhypt"]
 
 [ext_resource type="Script" uid="uid://cc6itckemlmc5" path="res://player_ui.gd" id="1_5m0x8"]
 [ext_resource type="Texture2D" uid="uid://b1uetiius72s8" path="res://crosshair.png" id="1_lwipk"]
+[ext_resource type="Texture2D" uid="uid://b22ix4p4cj80q" path="res://models/Textures/healthbarProgress.png" id="2_654h1"]
+[ext_resource type="Texture2D" uid="uid://dnqxfsl4gq0s7" path="res://models/Textures/healthbarUnder.png" id="2_pc08v"]
+
+[sub_resource type="Theme" id="Theme_654h1"]
 
 [node name="PlayerUI" type="Control"]
 layout_mode = 3
@@ -12,22 +16,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_5m0x8")
-
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_lwipk")
-expand_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -41,7 +29,60 @@ offset_top = -95.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="Label" type="Label" parent="MarginContainer"]
+[node name="AmmoText" type="Label" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "asdasdasd"
+
+[node name="EnemyInfoContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 470.0
+offset_top = 168.0
+offset_right = 670.0
+offset_bottom = 245.0
+
+[node name="EnemyName" type="Label" parent="EnemyInfoContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="MarginContainer3" type="MarginContainer" parent="EnemyInfoContainer"]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="EnemyInfoContainer/MarginContainer3"]
+layout_mode = 2
+ratio = 10.0
+
+[node name="EnemyHealthBar" type="TextureProgressBar" parent="EnemyInfoContainer/MarginContainer3/AspectRatioContainer"]
+custom_minimum_size = Vector2(100, 25)
+layout_mode = 2
+theme = SubResource("Theme_654h1")
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("2_pc08v")
+texture_progress = ExtResource("2_654h1")
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Crosshair" type="TextureRect" parent="MarginContainer2"]
+layout_mode = 2
+texture = ExtResource("1_lwipk")
+expand_mode = 4
+
+[node name="FPS" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
