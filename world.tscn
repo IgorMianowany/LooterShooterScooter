@@ -40,6 +40,8 @@ material_override = SubResource("StandardMaterial3D_f3sb7")
 mesh = SubResource("PlaneMesh_gv5m4")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+collision_layer = 255
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
 transform = Transform3D(33, 0, 0, 0, 33, 0, 0, 0, 33, 87.5974, -16.5664, -116.007)
@@ -133,8 +135,10 @@ visible = false
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_dwbse")
 
-[node name="Zombie" parent="." instance=ExtResource("4_aqk2v")]
+[node name="Zombie" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_aqk2v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.03318)
+player = NodePath("../Player")
 
-[node name="Zombie2" parent="." instance=ExtResource("4_aqk2v")]
+[node name="Zombie2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_aqk2v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.487113, 0, -9.03318)
+player = NodePath("../Player")

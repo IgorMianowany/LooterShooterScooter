@@ -6,7 +6,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v7oki"]
 radius = 0.0148427
-height = 0.0694954
+height = 0.21882974
 
 [node name="Bullet" instance=ExtResource("1_v7oki")]
 transform = Transform3D(15, 0, 0, 0, -6.55671e-07, 15, 0, -15, -6.55671e-07, 0, 0, 0)
@@ -16,11 +16,13 @@ script = ExtResource("2_t4vbm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24242e-10, -0.00284234, -0.00024116)
 collision_layer = 256
 collision_mask = 0
+collision_priority = 5.0
 monitoring = false
+priority = 1
 script = ExtResource("2_v8qja")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46797e-09, 0.0335833, 0)
+transform = Transform3D(0.99999857, 0, 0, 0, 0.99999857, -2.842171e-14, 0, 2.842171e-14, 0.99999857, -1.46797e-09, -0.04108386, 1.4551915e-11)
 shape = SubResource("CapsuleShape3D_v7oki")
 
 [node name="Tip" type="Marker3D" parent="." index="2"]

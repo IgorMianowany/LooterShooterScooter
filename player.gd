@@ -18,9 +18,6 @@ var aimed_at_enemy : Enemy = null
 @export var mouse_sensitivity : float = 0.15
 @export var weapon : Weapon
 
-signal start_walking
-signal stop_walking
-
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
@@ -81,7 +78,6 @@ func _unhandled_input(event):
 		_exit()
 
 func update_camera(delta):
-	
 	mouse_rotation.x += tilt_input * delta
 	mouse_rotation.x = clamp(mouse_rotation.x, TILT_LOWER_LIMIT, TILT_UPPER_LIMIT)
 	mouse_rotation.y += rotation_input * delta
@@ -96,8 +92,9 @@ func update_camera(delta):
 	
 	rotation_input = 0.0
 	tilt_input = 0.0
+	
 func shoot():
-	$Camera3D/WeaponsBackpack.weapon_1._shoot()
+	#$Camera3D/WeaponsBackpack.weapon_1._shoot()
 	weapon._shoot()
 
 func reload():

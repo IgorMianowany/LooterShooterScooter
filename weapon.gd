@@ -14,12 +14,9 @@ signal start_shooting
 signal stop_shooting
 
 func _shoot():
-	#(get_children()[0] as Pistol)._shoot()
 	pass
 	
 func _reload():
-	#for child in get_children():
-		#(child as Weapon)._reload()
 	pass
 	
 func _get_current_magazine_size() -> int:
