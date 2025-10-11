@@ -3,11 +3,20 @@ extends Node3D
 
 var health : float = 100
 var max_health : float = 100
-@export var player : Player
+var player : Player
+var player_in_range : bool = false
+var speed : float = 10
+var move_dir : Vector3 
 
-func _process(_delta):
+func _process(delta):
+	if player == null:
+		return
 	look_at(player.global_position)
 	rotate(Vector3(0,1,0), deg_to_rad(180))
+	var distance_to_player = global_position.distance_to(player.global_position)
+	if distance_to_player > 5:
+		move_dir = global_position.direction_to(player.global_position)
+		global_position += move_dir * speed * delta
 
 func take_damage(damage : float):
 	health -= damage
@@ -17,9 +26,14 @@ func take_damage(damage : float):
 		queue_free()
 
 
-func _on_player_detection_range_area_entered(area: Area3D) -> void:
-	print(area.name)
+func _on_player_detection_range_area_entered(_area: Area3D) -> void:
+	player_in_range = true
+	player = _area.get_parent()
+func _on_player_detection_range_area_exited(_area: Area3D) -> void:
+	player_in_range = false
+	player = null
 	
+
 func _display_damage(damage : float, is_critical : bool = false):
 	if damage <= 0:
 		return
@@ -58,3 +72,7 @@ func _display_damage(damage : float, is_critical : bool = false):
 	).set_ease(Tween.EASE_IN).set_delay(0.5)
 	
 	await tween.finished
+
+func _on_collision_area_area_entered(area: Area3D) -> void:
+	var knockback_dir = area.global_position.direction_to(global_position)
+	global_position += knockback_dir * .25

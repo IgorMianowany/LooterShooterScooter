@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://cq703l7u06dnl"]
+[gd_scene load_steps=49 format=4 uid="uid://cq703l7u06dnl"]
 
 [ext_resource type="PackedScene" uid="uid://43lpari5m4ea" path="res://enemy.tscn" id="1_roy8y"]
 [ext_resource type="Script" uid="uid://dtggahtoacnqc" path="res://zombie.gd" id="2_eseir"]
@@ -1857,6 +1857,9 @@ _data = {
 radius = 1.11268
 height = 3.42253
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_jmu02"]
+size = Vector3(2.3150024, 3.4764404, 1)
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_roy8y"]
 viewport_path = NodePath("SubViewport")
 
@@ -1914,11 +1917,15 @@ collision_mask = 256
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03798, 0)
 shape = SubResource("CapsuleShape3D_roy8y")
 
-[node name="Sprite3D" parent="." index="3"]
+[node name="CollisionShape3D" parent="CollisionArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.049957275, 1.2382202, 0)
+shape = SubResource("BoxShape3D_jmu02")
+
+[node name="Sprite3D" parent="." index="4"]
 transform = Transform3D(4.05362, 0, 0, 0, 3.77242, 0, 0, 0, 1, 0, 3.19707, 0)
 texture = SubResource("ViewportTexture_roy8y")
 
-[node name="RayCastHitbox" parent="." index="4"]
+[node name="RayCastHitbox" parent="." index="5"]
 collision_layer = 128
 collision_mask = 0
 monitoring = false
@@ -1927,5 +1934,4 @@ monitoring = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2898297, 0)
 shape = SubResource("CapsuleShape3D_jmu02")
 
-[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]
