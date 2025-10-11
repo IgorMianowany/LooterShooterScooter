@@ -36,7 +36,5 @@ debug_color = Color(0.9697884, 0.115281604, 0.33965302, 0.41960785)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 
-[node name="Label3D" type="Label3D" parent="."]
-
 [connection signal="area_entered" from="PlayerDetectionRange" to="." method="_on_player_detection_range_area_entered"]
 [connection signal="area_exited" from="PlayerDetectionRange" to="." method="_on_player_detection_range_area_exited"]
