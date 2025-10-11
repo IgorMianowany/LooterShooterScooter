@@ -1869,6 +1869,10 @@ radius = 0.9135742
 height = 3.2138672
 
 [node name="Zombie" instance=ExtResource("1_roy8y")]
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
 script = ExtResource("2_eseir")
 
 [node name="character-l" type="Node3D" parent="." index="0"]

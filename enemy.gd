@@ -45,7 +45,7 @@ func _display_damage(damage : float, is_critical : bool = false):
 	var value : int = int(damage)
 	var number = Label.new()
 	$SubViewport.add_child(number)
-	number.position = Vector2(10,20)
+	number.position = Vector2(250,250)
 	number.position += Vector2(randf_range(-25,25), randf_range(-25,25))
 	number.visible = true
 	number.scale = Vector2.ONE
