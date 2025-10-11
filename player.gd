@@ -4,7 +4,9 @@ extends CharacterBody3D
 const TILT_LOWER_LIMIT := deg_to_rad(-90.0)
 const TILT_UPPER_LIMIT := deg_to_rad(90.0)
 
-var speed : float = 30
+var speed : float = 15
+var sprint_multi : float = 1.5
+var is_sprinting : bool = false
 var jump_velocity = 20
 var mouse_input : bool = false
 var mouse_rotation : Vector3
@@ -13,6 +15,7 @@ var tilt_input : float
 var player_rotation : Vector3
 var camera_rotation : Vector3
 var aimed_at_enemy : Enemy = null
+var dash_ready : bool = true
 
 @export var camera_controller : Camera3D
 @export var mouse_sensitivity : float = 0.15
@@ -34,22 +37,28 @@ func _physics_process(delta: float) -> void:
 			velocity += get_gravity() * 2.5 * delta
 		else:
 			velocity += get_gravity() * delta * 4
+	else:
+		dash_ready = true
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
-		
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+	
+	if Input.is_action_pressed("sprint") and is_on_floor():
+		is_sprinting = true
+	if Input.is_action_just_released("sprint"):
+		is_sprinting = false
+
 	var input_direction = Input.get_vector("left", "right", "forward", "backward")
 	var direction := (transform.basis * Vector3(input_direction.x, 0, input_direction.y)).normalized()
+	var end_speed : float = speed + (speed * sprint_multi * int(is_sprinting))
 	if direction:
 		$AnimationPlayer.play("walk")
-		velocity.x = direction.x * speed
-		velocity.z = direction.z * speed
+		velocity.x = direction.x * end_speed
+		velocity.z = direction.z * end_speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
-		velocity.z = move_toward(velocity.z, 0, speed)
+		velocity.x = move_toward(velocity.x, 0, end_speed)
+		velocity.z = move_toward(velocity.z, 0, end_speed)
 	if velocity.x == 0 and velocity.z == 0:
 		$AnimationPlayer.stop()
 	
@@ -68,6 +77,18 @@ func _physics_process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("reload"):
 		reload()
+	if event.is_action_pressed("sprint") and not is_on_floor() and dash_ready:
+		dash()
+
+	
+func dash():
+	dash_ready = false
+	speed *= 5
+	velocity.y = 0
+	await(get_tree().create_timer(.15).timeout)
+	speed = 15
+	await(get_tree().create_timer(1).timeout)
+	dash_ready = true
 	
 func _unhandled_input(event):
 	mouse_input = event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED
