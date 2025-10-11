@@ -1,9 +1,9 @@
 class_name Zombie
 extends Enemy
 
+func _ready() -> void:
+	speed = 300
 
-func _process(delta):
+func _physics_process(delta: float) -> void:
 	super(delta)
-	#$"character-l".look_at(Vector3.FORWARD)
-	#$"character-l".rotate(Vector3(0,1,0), deg_to_rad(180))
-	$"character-l".look_at(move_dir)
+	

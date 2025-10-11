@@ -1,22 +1,27 @@
 class_name Enemy
-extends Node3D
+extends CharacterBody3D
 
 var health : float = 100
 var max_health : float = 100
 var player : Player
 var player_in_range : bool = false
-var speed : float = 10
+var speed : float = 200
 var move_dir : Vector3 
-
-func _process(delta):
+	
+func _physics_process(delta: float) -> void:
+	if not is_on_floor():
+		velocity += get_gravity() * 2.5 * delta
 	if player == null:
 		return
 	look_at(player.global_position)
 	rotate(Vector3(0,1,0), deg_to_rad(180))
 	var distance_to_player = global_position.distance_to(player.global_position)
-	if distance_to_player > 5:
+	if distance_to_player > 5 and player_in_range:
 		move_dir = global_position.direction_to(player.global_position)
-		global_position += move_dir * speed * delta
+		#global_position += move_dir * speed * delta
+		velocity = move_dir * speed * delta
+	move_and_slide()
+
 
 func take_damage(damage : float):
 	health -= damage
@@ -25,13 +30,13 @@ func take_damage(damage : float):
 		await(get_tree().create_timer(.5).timeout)
 		queue_free()
 
-
-func _on_player_detection_range_area_entered(_area: Area3D) -> void:
+func _on_player_detection_range_area_entered(area: Area3D) -> void:
 	player_in_range = true
-	player = _area.get_parent()
+	player = area.get_parent()
+
+
 func _on_player_detection_range_area_exited(_area: Area3D) -> void:
 	player_in_range = false
-	player = null
 	
 
 func _display_damage(damage : float, is_critical : bool = false):

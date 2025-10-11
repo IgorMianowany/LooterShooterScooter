@@ -5,12 +5,11 @@
 [ext_resource type="Script" uid="uid://11wi78ajfrjk" path="res://enemy_ui.gd" id="3_epg4t"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_4gyqm"]
-viewport_path = NodePath("SubViewport")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iifgy"]
 radius = 37.391293
 
-[node name="Enemy" type="Node3D"]
+[node name="Enemy" type="CharacterBody3D"]
 script = ExtResource("1_7k104")
 
 [node name="Hurtbox" type="Area3D" parent="."]
@@ -20,10 +19,6 @@ monitorable = false
 script = ExtResource("2_4gyqm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
-
-[node name="CollisionArea" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionArea"]
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 texture = SubResource("ViewportTexture_4gyqm")
@@ -50,7 +45,7 @@ transparent_bg = true
 size = Vector2i(100, 100)
 script = ExtResource("3_epg4t")
 
-[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
-[connection signal="area_entered" from="CollisionArea" to="." method="_on_collision_area_area_entered"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+
 [connection signal="area_entered" from="PlayerDetectionRange" to="." method="_on_player_detection_range_area_entered"]
 [connection signal="area_exited" from="PlayerDetectionRange" to="." method="_on_player_detection_range_area_exited"]

@@ -11,6 +11,7 @@ radius = 0.966793
 height = 3.0056
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_sweqy"]
+radius = 0.7887576
 
 [node name="Player" node_paths=PackedStringArray("camera_controller", "weapon") instance=ExtResource("1_4flbx")]
 collision_layer = 0
@@ -62,7 +63,6 @@ debug_shape_thickness = 5
 [node name="PlayerUI" parent="." index="4" instance=ExtResource("3_i3pqv")]
 
 [node name="DetectionArea" type="Area3D" parent="." index="5"]
-visible = false
 collision_layer = 8
 collision_mask = 0
 monitoring = false
