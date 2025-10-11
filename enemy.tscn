@@ -10,12 +10,22 @@ radius = 37.391293
 script = ExtResource("1_7k104")
 
 [node name="Hurtbox" type="Area3D" parent="."]
-collision_layer = 256
-collision_mask = 0
+collision_layer = 0
+collision_mask = 256
 monitorable = false
 script = ExtResource("2_4gyqm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+
+[node name="CritHurtbox" type="Area3D" parent="."]
+collision_layer = 256
+collision_mask = 256
+monitorable = false
+script = ExtResource("2_4gyqm")
+is_crit = true
+metadata/_custom_type_script = "uid://baj3fxdsp6qc7"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CritHurtbox"]
 
 [node name="RayCastHitbox" type="Area3D" parent="."]
 
@@ -32,9 +42,8 @@ debug_color = Color(0.9697884, 0.115281604, 0.33965302, 0.41960785)
 
 [node name="DamageNumbersOrigin" type="Node3D" parent="."]
 
-[node name="Node3D" type="Node3D" parent="."]
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 
+[connection signal="area_entered" from="CritHurtbox" to="CritHurtbox" method="_on_area_entered"]
 [connection signal="area_entered" from="PlayerDetectionRange" to="." method="_on_player_detection_range_area_entered"]
 [connection signal="area_exited" from="PlayerDetectionRange" to="." method="_on_player_detection_range_area_exited"]

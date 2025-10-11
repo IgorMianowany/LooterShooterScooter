@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://cq703l7u06dnl"]
+[gd_scene load_steps=49 format=4 uid="uid://cq703l7u06dnl"]
 
 [ext_resource type="PackedScene" uid="uid://43lpari5m4ea" path="res://enemy.tscn" id="1_roy8y"]
 [ext_resource type="Script" uid="uid://dtggahtoacnqc" path="res://zombie.gd" id="2_eseir"]
@@ -1853,9 +1853,11 @@ _data = {
 &"wheelchair-sit": SubResource("Animation_ea740")
 }
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_roy8y"]
-radius = 1.11268
-height = 2.7937846
+[sub_resource type="BoxShape3D" id="BoxShape3D_jmu02"]
+size = Vector3(1.7235718, 1.5918274, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_eseir"]
+radius = 1.1488674
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jmu02"]
 radius = 1.7387695
@@ -1911,15 +1913,19 @@ libraries = {
 &"": SubResource("AnimationLibrary_q5ypp")
 }
 
-[node name="Hurtbox" parent="." index="2"]
-collision_layer = 0
-collision_mask = 256
-
 [node name="CollisionShape3D" parent="Hurtbox" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3523526, 0)
-shape = SubResource("CapsuleShape3D_roy8y")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.029693604, 0.57079184, 0)
+shape = SubResource("BoxShape3D_jmu02")
 
-[node name="RayCastHitbox" parent="." index="3"]
+[node name="CritHurtbox" parent="." index="3"]
+collision_layer = 0
+
+[node name="CollisionShape3D" parent="CritHurtbox" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3424318, 0)
+shape = SubResource("SphereShape3D_eseir")
+
+[node name="RayCastHitbox" parent="." index="4"]
+visible = false
 collision_layer = 128
 collision_mask = 0
 monitoring = false
@@ -1928,8 +1934,12 @@ monitoring = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.297154, 0)
 shape = SubResource("CapsuleShape3D_jmu02")
 
+[node name="PlayerDetectionRange" parent="." index="5"]
+visible = false
+
 [node name="CollisionShape3D" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5307617, 0)
+visible = false
 shape = SubResource("CapsuleShape3D_eseir")
 
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]

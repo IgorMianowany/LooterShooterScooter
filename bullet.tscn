@@ -22,7 +22,7 @@ priority = 1
 script = ExtResource("2_v8qja")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" index="0"]
-transform = Transform3D(0.99999857, 0, 0, 0, 0.99999857, -2.842171e-14, 0, 2.842171e-14, 0.99999857, -1.46797e-09, -0.04108386, 1.4551915e-11)
+transform = Transform3D(0.99999857, 0, 0, 0, 0.99999857, -2.842171e-14, 0, 2.842171e-14, 0.99999857, -1.46797e-09, -0.041083857, 2.910383e-11)
 shape = SubResource("CapsuleShape3D_v7oki")
 
 [node name="Tip" type="Marker3D" parent="." index="2"]

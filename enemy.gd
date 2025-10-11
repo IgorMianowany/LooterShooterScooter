@@ -23,9 +23,9 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func take_damage(damage : float):
+func take_damage(damage : float, is_crit : bool = false):
 	health -= damage
-	_display_damage(damage)
+	_display_damage(damage, is_crit)
 	if health <= 0:
 		await(get_tree().create_timer(.5).timeout)
 		queue_free()
