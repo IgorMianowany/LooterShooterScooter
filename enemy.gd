@@ -43,37 +43,36 @@ func _display_damage(damage : float, is_critical : bool = false):
 	if damage <= 0:
 		return
 	var value : int = int(damage)
-	var number = Label.new()
-	$SubViewport.add_child(number)
-	number.position = Vector2(250,250)
-	number.position += Vector2(randf_range(-25,25), randf_range(-25,25))
+	var number = Label3D.new()
+	add_child(number)
+	number.position += Vector3(randf_range(-2.5,2.5), 3.5, 2)
+	number.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	number.visible = true
-	number.scale = Vector2.ONE
+	number.scale = Vector3.ONE
 	number.text = str(value)
-	number.label_settings = LabelSettings.new()
 	
 	var color = "#fff"
 	if is_critical:
 		color = "#b22"
 	if value == 0:
 		color = "fff8"
-	number.label_settings.font_color = color
-	number.label_settings.font_size = 40
-	number.label_settings.outline_color = "#000"
-	number.label_settings.outline_size = 1
+	number.modulate = color
+	number.font_size = 200
+	number.outline_modulate = "#000"
+	number.outline_size = 100
 	
-	number.pivot_offset = Vector2(number.size / 2)
+	#number.pivot_offset = Vector2(number.size / 2)
 	 
 	var tween = get_tree().create_tween()
 	tween.set_parallel(true)
 	tween.tween_property(
-		number, "position:y", number.position.y - 24, 0.25
+		number, "position:y", number.position.y + 3, 0.25
 	).set_ease(Tween.EASE_OUT)
 	tween.tween_property(
 		number, "position:y", number.position.y, 0.5
 	).set_ease(Tween.EASE_IN).set_delay(0.25)
 	tween.tween_property(
-		number, "scale", Vector2.ZERO, 0.25
+		number, "scale", Vector3.ZERO, 0.25
 	).set_ease(Tween.EASE_IN).set_delay(0.5)
 	
 	await tween.finished

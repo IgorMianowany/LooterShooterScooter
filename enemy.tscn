@@ -1,10 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://43lpari5m4ea"]
+[gd_scene load_steps=4 format=3 uid="uid://43lpari5m4ea"]
 
 [ext_resource type="Script" uid="uid://w8aynqu8tt4w" path="res://enemy.gd" id="1_7k104"]
 [ext_resource type="Script" uid="uid://baj3fxdsp6qc7" path="res://hurtbox.gd" id="2_4gyqm"]
-[ext_resource type="Script" uid="uid://11wi78ajfrjk" path="res://enemy_ui.gd" id="3_epg4t"]
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_4gyqm"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iifgy"]
 radius = 37.391293
@@ -19,9 +16,6 @@ monitorable = false
 script = ExtResource("2_4gyqm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
-
-[node name="Sprite3D" type="Sprite3D" parent="."]
-texture = SubResource("ViewportTexture_4gyqm")
 
 [node name="RayCastHitbox" type="Area3D" parent="."]
 
@@ -40,12 +34,9 @@ debug_color = Color(0.9697884, 0.115281604, 0.33965302, 0.41960785)
 
 [node name="Node3D" type="Node3D" parent="."]
 
-[node name="SubViewport" type="SubViewport" parent="."]
-transparent_bg = true
-size = Vector2i(500, 500)
-script = ExtResource("3_epg4t")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+
+[node name="Label3D" type="Label3D" parent="."]
 
 [connection signal="area_entered" from="PlayerDetectionRange" to="." method="_on_player_detection_range_area_entered"]
 [connection signal="area_exited" from="PlayerDetectionRange" to="." method="_on_player_detection_range_area_exited"]
