@@ -1,6 +1,7 @@
-[gd_scene load_steps=47 format=4 uid="uid://cq703l7u06dnl"]
+[gd_scene load_steps=48 format=4 uid="uid://cq703l7u06dnl"]
 
 [ext_resource type="PackedScene" uid="uid://43lpari5m4ea" path="res://enemy.tscn" id="1_roy8y"]
+[ext_resource type="Script" uid="uid://dtggahtoacnqc" path="res://zombie.gd" id="2_eseir"]
 [ext_resource type="Texture2D" uid="uid://binq7y83n7yp8" path="res://models/character_models/Textures/texture-l.png" id="2_jmu02"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8awoe"]
@@ -1864,6 +1865,7 @@ radius = 1.96875
 height = 3.9375
 
 [node name="Zombie" instance=ExtResource("1_roy8y")]
+script = ExtResource("2_eseir")
 
 [node name="character-l" type="Node3D" parent="." index="0"]
 
