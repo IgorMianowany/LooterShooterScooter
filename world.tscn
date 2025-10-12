@@ -138,3 +138,9 @@ environment = SubResource("Environment_dwbse")
 
 [node name="Zombie" parent="." instance=ExtResource("4_aqk2v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44785714, 0)
+
+[node name="Zombie2" parent="." instance=ExtResource("4_aqk2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44785714, -12.018734)
+
+[node name="Zombie3" parent="." instance=ExtResource("4_aqk2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44785714, -7.028288)
