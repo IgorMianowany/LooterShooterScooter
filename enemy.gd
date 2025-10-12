@@ -7,6 +7,7 @@ var player : Player
 var player_in_range : bool = false
 var speed : float = 200
 var move_dir : Vector3 
+var is_knocked_back : bool = false
 	
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -19,7 +20,7 @@ func _physics_process(delta: float) -> void:
 	if distance_to_player > 5 and player_in_range:
 		move_dir = global_position.direction_to(player.global_position)
 		#global_position += move_dir * speed * delta
-		velocity = move_dir * speed * delta
+		velocity = (move_dir * (-2 * int(is_knocked_back) + 1)) * speed * delta
 	move_and_slide()
 
 
