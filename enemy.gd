@@ -27,8 +27,7 @@ func take_damage(damage : float, is_crit : bool = false):
 	health -= damage
 	_display_damage(damage, is_crit)
 	if health <= 0:
-		await(get_tree().create_timer(.5).timeout)
-		queue_free()
+		_die()
 
 func _on_player_detection_range_area_entered(area: Area3D) -> void:
 	player_in_range = true
@@ -80,3 +79,7 @@ func _display_damage(damage : float, is_critical : bool = false):
 func _on_collision_area_area_entered(area: Area3D) -> void:
 	var knockback_dir = area.global_position.direction_to(global_position)
 	global_position += knockback_dir * .25
+	
+func _die():
+	print("nic")
+	queue_free()
