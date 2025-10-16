@@ -8,3 +8,6 @@ var weapon_2 : Weapon
 func _ready() -> void:
 	weapon_1 = $Pistol
 	weapon_1.player = player
+	weapon_2 = $AssaultRifle
+	weapon_2.player = player
+	

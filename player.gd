@@ -79,7 +79,14 @@ func _input(event: InputEvent) -> void:
 		reload()
 	if event.is_action_pressed("sprint") and not is_on_floor() and dash_ready:
 		dash()
-
+	if event.is_action_pressed("switch_weapon_1"):
+		weapon.visible = false
+		weapon = $Camera3D/WeaponsBackpack.weapon_1
+		weapon.visible = true
+	if event.is_action_pressed("switch_weapon_2"):
+		weapon.visible = false
+		weapon = $Camera3D/WeaponsBackpack.weapon_2
+		weapon.visible = true
 	
 func dash():
 	dash_ready = false
@@ -115,7 +122,6 @@ func update_camera(delta):
 	tilt_input = 0.0
 	
 func shoot():
-	#$Camera3D/WeaponsBackpack.weapon_1._shoot()
 	weapon._shoot()
 
 func reload():
@@ -123,6 +129,3 @@ func reload():
 	
 func hitmark():
 	$PlayerUI.show_hitmarker()
-	
-	
-	

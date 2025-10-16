@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c3r7x5nnilava"]
+[gd_scene load_steps=9 format=3 uid="uid://c3r7x5nnilava"]
 
 [ext_resource type="PackedScene" uid="uid://cb7jkmm5jny8i" path="res://models/character_models/character-a.glb" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://xkheiw2w0x41" path="res://player.gd" id="2_onrkg"]
 [ext_resource type="Script" uid="uid://76xhwl26be7h" path="res://weapons_backpack.gd" id="3_2hs0m"]
 [ext_resource type="PackedScene" uid="uid://o1yl32ljhypt" path="res://player_ui.tscn" id="3_i3pqv"]
+[ext_resource type="PackedScene" uid="uid://bhwpngou3qpga" path="res://assault_rifle.tscn" id="5_1jxqw"]
 [ext_resource type="PackedScene" uid="uid://t218voefpyow" path="res://pistol.tscn" id="5_2hs0m"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
@@ -50,6 +51,9 @@ player = NodePath("../..")
 
 [node name="Pistol" parent="Camera3D/WeaponsBackpack" index="0" instance=ExtResource("5_2hs0m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="AssaultRifle" parent="Camera3D/WeaponsBackpack" index="1" instance=ExtResource("5_1jxqw")]
+visible = false
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D" index="1"]
 transform = Transform3D(-1, 8.742278e-08, 0, 3.821371e-15, 4.371139e-08, 1, 8.742278e-08, 1, -4.371139e-08, 0, 0, 0)
