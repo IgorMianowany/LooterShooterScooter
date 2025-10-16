@@ -10,4 +10,4 @@ script = ExtResource("2_q85am")
 [node name="BulletSpawn" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.005635)
 
-[node name="Assault Rifle" parent="." index="1" instance=ExtResource("2_yxeqx")]
+[node name="GunModel" parent="." index="1" instance=ExtResource("2_yxeqx")]

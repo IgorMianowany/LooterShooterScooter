@@ -1,13 +1,6 @@
 class_name Pistol
 extends Weapon
 
-var shot : bool = false
-var bullet_scene := preload("res://bullet.tscn")
-var original_transform : Transform3D
-var cooldown : float = 0
-var cooldown_time : float = .25
-signal hitmarker
-
 func _ready() -> void:
 	#stop_shooting.connect(handle_stop_shooting)
 	active = true
@@ -18,7 +11,9 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	cooldown -= delta
-	if(cooldown <= 0):
+	#if(cooldown <= 0):
+		#handle_stop_shooting()
+	if Input.is_action_just_released("shoot") and cooldown <= 0:
 		handle_stop_shooting()
 
 func _shoot():

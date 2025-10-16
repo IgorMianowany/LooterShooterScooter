@@ -9,6 +9,11 @@ var max_magazine_size : int = 10
 var ammo_reserve : int = 50
 var is_reloading : bool = false
 var reload_time : float = 1
+var shot : bool = false
+var bullet_scene := preload("res://bullet.tscn")
+var original_transform : Transform3D
+var cooldown : float = 0
+var cooldown_time : float = .25
 
 signal start_shooting
 signal stop_shooting

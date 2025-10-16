@@ -1,6 +1,48 @@
 class_name AssaultRifle
 extends Weapon
 
+func _ready() -> void:
+	#stop_shooting.connect(handle_stop_shooting)
+	active = true
+	bullet_spawn = $BulletSpawn
+	original_transform = $GunModel.transform
+	max_magazine_size = 30
+	current_magazine_size = max_magazine_size
+	ammo_reserve = 100
+	cooldown_time = .15
+	
+func _process(delta: float) -> void:
+	cooldown -= delta
+	if(cooldown <= 0):
+		handle_stop_shooting()
 
 func _shoot():
-	print("shooting pew pew")
+	if not is_reloading and not shot and current_magazine_size > 0:
+		current_magazine_size -= 1
+		cooldown = cooldown_time
+		animate_recoil()
+		shot = true
+		var bullet : Bullet = bullet_scene.instantiate()
+		add_child(bullet)
+		bullet.weapon = self
+		bullet.global_position = bullet_spawn.global_position
+		
+func handle_stop_shooting():
+	shot = false
+	
+func animate_recoil():
+	var tween = get_tree().create_tween()
+	#tween.tween_property($GunModel, "transform", Transform3D($GunModel.transform).rotated(Vector3(1,0,0).normalized(), clamp(deg_to_rad(15) + $GunModel.rotation.x, 0, deg_to_rad(15))), .1)
+	tween.tween_property($GunModel, "transform", Transform3D($GunModel.transform).translated(Vector3(0,0,.5)), .1)
+	tween.tween_property($GunModel, "transform", original_transform, .1)
+	
+func _reload():
+	if is_reloading:
+		return
+	is_reloading = true
+	await(get_tree().create_timer(reload_time).timeout)
+	var amount_to_take = max_magazine_size - current_magazine_size
+	var amount_taken = amount_to_take if ammo_reserve > amount_to_take else ammo_reserve
+	ammo_reserve -= amount_taken
+	current_magazine_size += amount_taken
+	is_reloading = false

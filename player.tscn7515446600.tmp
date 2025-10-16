@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=3 uid="uid://c3r7x5nnilava"]
+
+[ext_resource type="PackedScene" uid="uid://cb7jkmm5jny8i" path="res://models/character_models/character-a.glb" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://xkheiw2w0x41" path="res://player.gd" id="2_onrkg"]
+[ext_resource type="Script" uid="uid://76xhwl26be7h" path="res://weapons_backpack.gd" id="3_2hs0m"]
+[ext_resource type="PackedScene" uid="uid://o1yl32ljhypt" path="res://player_ui.tscn" id="3_i3pqv"]
+[ext_resource type="PackedScene" uid="uid://bhwpngou3qpga" path="res://assault_rifle.tscn" id="5_1jxqw"]
+[ext_resource type="PackedScene" uid="uid://t218voefpyow" path="res://pistol.tscn" id="5_2hs0m"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
+radius = 0.966793
+height = 3.0056
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_sweqy"]
+radius = 0.7887576
+
+[node name="Player" node_paths=PackedStringArray("camera_controller", "weapon") instance=ExtResource("1_4flbx")]
+collision_layer = 0
+script = ExtResource("2_onrkg")
+camera_controller = NodePath("Camera3D")
+weapon = NodePath("Camera3D/WeaponsBackpack/Pistol")
+
+[node name="character-a" parent="." index="0"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="torso" parent="character-a/root" index="2"]
+layers = 256
+
+[node name="arm-left" parent="character-a/root/torso" index="0"]
+layers = 0
+
+[node name="arm-right" parent="character-a/root/torso" index="1"]
+layers = 0
+
+[node name="head" parent="character-a/root/torso" index="2"]
+layers = 256
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.40752, 0)
+visible = false
+shape = SubResource("CapsuleShape3D_onrkg")
+
+[node name="Camera3D" type="Camera3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, -0.40251)
+cull_mask = 1048319
+
+[node name="WeaponsBackpack" type="Node3D" parent="Camera3D" index="0" node_paths=PackedStringArray("player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.265474, -0.576243, -0.394412)
+script = ExtResource("3_2hs0m")
+player = NodePath("../..")
+
+[node name="Pistol" parent="Camera3D/WeaponsBackpack" index="0" instance=ExtResource("5_2hs0m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="AssaultRifle" parent="Camera3D/WeaponsBackpack" index="1" instance=ExtResource("5_1jxqw")]
+visible = false
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D" index="1"]
+transform = Transform3D(-1, 8.742278e-08, 0, 3.821371e-15, 4.371139e-08, 1, 8.742278e-08, 1, -4.371139e-08, 0, 0, 0)
+visible = false
+target_position = Vector3(0, -100, 0)
+collision_mask = 128
+collide_with_areas = true
+collide_with_bodies = false
+debug_shape_thickness = 5
+
+[node name="PlayerUI" parent="." index="4" instance=ExtResource("3_i3pqv")]
+
+[node name="DetectionArea" type="Area3D" parent="." index="5"]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6401591, 0)
+shape = SubResource("SphereShape3D_sweqy")
