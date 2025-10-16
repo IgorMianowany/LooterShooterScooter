@@ -121,5 +121,8 @@ func shoot():
 func reload():
 	weapon._reload()
 	
+func hitmark():
+	$PlayerUI.show_hitmarker()
+	
 	
 	

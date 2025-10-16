@@ -136,6 +136,24 @@ visible = false
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_dwbse")
 
+[node name="Zombie7" parent="." instance=ExtResource("4_aqk2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.377945, 1.3435714, -14.056576)
+
+[node name="Zombie8" parent="." instance=ExtResource("4_aqk2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.377945, 1.3435714, -26.07531)
+
+[node name="Zombie9" parent="." instance=ExtResource("4_aqk2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.377945, 1.3435714, -21.084864)
+
+[node name="Zombie4" parent="." instance=ExtResource("4_aqk2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.160381, 0.8957143, -7.028288)
+
+[node name="Zombie5" parent="." instance=ExtResource("4_aqk2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.160381, 0.8957143, -19.047022)
+
+[node name="Zombie6" parent="." instance=ExtResource("4_aqk2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.160381, 0.8957143, -14.056576)
+
 [node name="Zombie" parent="." instance=ExtResource("4_aqk2v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44785714, 0)
 

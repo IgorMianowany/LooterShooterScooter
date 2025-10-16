@@ -5,7 +5,11 @@ extends Area3D
 var hits : int = 0
 var max_hits : int = 1
 var enemies_already_hit : Array[Enemy]
+var bullet : Bullet
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if enemies_already_hit.size() >= max_hits:
 		queue_free()
+		
+func hitmark():
+	bullet.hitmark()

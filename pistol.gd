@@ -6,6 +6,7 @@ var bullet_scene := preload("res://bullet.tscn")
 var original_transform : Transform3D
 var cooldown : float = 0
 var cooldown_time : float = .25
+signal hitmarker
 
 func _ready() -> void:
 	#stop_shooting.connect(handle_stop_shooting)
@@ -28,6 +29,7 @@ func _shoot():
 		shot = true
 		var bullet : Bullet = bullet_scene.instantiate()
 		add_child(bullet)
+		bullet.weapon = self
 		bullet.global_position = bullet_spawn.global_position
 		
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://o1yl32ljhypt"]
+[gd_scene load_steps=7 format=3 uid="uid://o1yl32ljhypt"]
 
 [ext_resource type="Script" uid="uid://cc6itckemlmc5" path="res://player_ui.gd" id="1_5m0x8"]
 [ext_resource type="Texture2D" uid="uid://b1uetiius72s8" path="res://crosshair.png" id="1_lwipk"]
 [ext_resource type="Texture2D" uid="uid://b22ix4p4cj80q" path="res://models/Textures/healthbarProgress.png" id="2_654h1"]
 [ext_resource type="Texture2D" uid="uid://dnqxfsl4gq0s7" path="res://models/Textures/healthbarUnder.png" id="2_pc08v"]
+[ext_resource type="Texture2D" uid="uid://dcxu7xrsg2spo" path="res://models/Textures/hitmarker.png" id="5_tybkg"]
 
 [sub_resource type="Theme" id="Theme_654h1"]
 
@@ -81,6 +82,15 @@ grow_vertical = 2
 layout_mode = 2
 texture = ExtResource("1_lwipk")
 expand_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2"]
+layout_mode = 2
+
+[node name="Hitmarker" type="Sprite2D" parent="MarginContainer2/MarginContainer"]
+visible = false
+position = Vector2(19.999987, 19.999989)
+scale = Vector2(0.072091416, 0.06932133)
+texture = ExtResource("5_tybkg")
 
 [node name="FPS" type="Label" parent="."]
 layout_mode = 0
