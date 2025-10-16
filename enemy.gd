@@ -11,6 +11,7 @@ var is_knocked_back : bool = false
 var knockback_chance : float = .05
 var knockback_speed : float = 0
 var knockback_cooldown : float = 2
+var is_dead : bool = false
 	
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
