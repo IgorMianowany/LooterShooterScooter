@@ -21,7 +21,7 @@ func take_damage(damage : float, is_crit : bool = false):
 		knockback_cooldown = 2
 		knockback_speed = 400
 		is_knocked_back = true
-	$AnimationPlayer.play("emote-yes")
+	$AnimationPlayer.play("headshot")
 	super(damage, is_crit)
 	
 
@@ -30,7 +30,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "die":
 		await(get_tree().create_timer(1).timeout)
 		queue_free()
-	if anim_name == "emote-yes":
+	else:
 		speed = 300
 		knockback_speed = 0
 		is_knocked_back = false
