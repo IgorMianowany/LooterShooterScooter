@@ -8,6 +8,7 @@ func _ready() -> void:
 	original_transform = $GunModel.transform
 	current_magazine_size = max_magazine_size
 	ammo_reserve = 100
+	cooldown_time = 0.2
 	
 func _process(delta: float) -> void:
 	cooldown -= delta

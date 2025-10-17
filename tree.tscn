@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://kxtjvsgj7ot"]
+
+[ext_resource type="PackedScene" uid="uid://cfse1uhhln4f" path="res://models/enviroment/Mountain (FBX)/Tree01.fbx" id="1_brfkd"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nnvrw"]
+height = 14.19397
+radius = 0.6713867
+
+[node name="Tree" type="StaticBody3D"]
+
+[node name="Tree01" parent="." instance=ExtResource("1_brfkd")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.689636, 0)
+shape = SubResource("CylinderShape3D_nnvrw")

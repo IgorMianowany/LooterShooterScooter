@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhsb44h6o4qog"]
+
+[ext_resource type="PackedScene" uid="uid://ctc4vxya3hdvd" path="res://models/enviroment/Mountain (FBX)/Rock01.fbx" id="1_o0qsl"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_o0qsl"]
+radius = 3.3691564
+
+[node name="StaticBody3D" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_o0qsl")
+
+[node name="Rock01" parent="." instance=ExtResource("1_o0qsl")]
