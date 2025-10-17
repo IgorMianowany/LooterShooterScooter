@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctj7ciueu1yd5"]
+
+[ext_resource type="PackedScene" uid="uid://wawn33jq1b8v" path="res://models/Hut/LogHutV1.1.fbx" id="1_jt3o7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jt3o7"]
+size = Vector3(14.810715, 15.63385, 12.431465)
+
+[node name="Hut" type="StaticBody3D"]
+
+[node name="LogHutV1_1" parent="." instance=ExtResource("1_jt3o7")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3359604, 4.512726, -0.3413353)
+shape = SubResource("BoxShape3D_jt3o7")
