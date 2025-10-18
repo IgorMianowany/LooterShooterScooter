@@ -144,4 +144,4 @@ func show_loot_ui(ui : LootWindow):
 func hide_loot_ui(parent : Enemy):
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	$PlayerUI.reparent_loot_window(parent)
-	is_mouse_swallowing_ui_open = true
+	is_mouse_swallowing_ui_open = false
