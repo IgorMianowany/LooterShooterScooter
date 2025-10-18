@@ -137,11 +137,11 @@ func hitmark():
 	
 func show_loot_ui(ui : LootWindow):
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
-	#ui.reparent($PlayerUI)
+	#maybe do this on tree_exited/tree_exiting signal to make sure it's called
 	is_mouse_swallowing_ui_open = true
 	$PlayerUI.add_child(ui)
 	
-func hide_loot_ui(parent : Enemy):
+func hide_loot_ui():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	$PlayerUI.reparent_loot_window(parent)
+	$PlayerUI.reparent_loot_window()
 	is_mouse_swallowing_ui_open = false
