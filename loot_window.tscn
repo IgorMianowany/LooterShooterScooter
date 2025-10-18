@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c5mj8n1fxbpe5"]
 
 [ext_resource type="Script" uid="uid://xwgrje0jaeph" path="res://loot_window.gd" id="1_eji6k"]
-[ext_resource type="Texture2D" uid="uid://dscfmc1jsdynf" path="res://icon.svg" id="2_7ngah"]
+[ext_resource type="PackedScene" uid="uid://bvex7wkja4jct" path="res://item_slot.tscn" id="2_7ngah"]
 
 [node name="LootWindow" type="Control"]
 layout_mode = 3
@@ -13,8 +13,261 @@ grow_vertical = 2
 mouse_behavior_recursive = 2
 script = ExtResource("1_eji6k")
 
-[node name="Loot" type="Node" parent="."]
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(1000, 500)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(559, 160)
-texture = ExtResource("2_7ngah")
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+size_flags_stretch_ratio = 15.68
+alignment = 1
+
+[node name="Row1" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ItemSlot" parent="Panel/MarginContainer/VBoxContainer/Row1" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot13" parent="Panel/MarginContainer/VBoxContainer/Row1" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot14" parent="Panel/MarginContainer/VBoxContainer/Row1" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot15" parent="Panel/MarginContainer/VBoxContainer/Row1" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot16" parent="Panel/MarginContainer/VBoxContainer/Row1" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot17" parent="Panel/MarginContainer/VBoxContainer/Row1" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot18" parent="Panel/MarginContainer/VBoxContainer/Row1" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot2" parent="Panel/MarginContainer/VBoxContainer/Row1" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot3" parent="Panel/MarginContainer/VBoxContainer/Row1" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot4" parent="Panel/MarginContainer/VBoxContainer/Row1" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot5" parent="Panel/MarginContainer/VBoxContainer/Row1" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot6" parent="Panel/MarginContainer/VBoxContainer/Row1" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot7" parent="Panel/MarginContainer/VBoxContainer/Row1" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot8" parent="Panel/MarginContainer/VBoxContainer/Row1" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot9" parent="Panel/MarginContainer/VBoxContainer/Row1" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot10" parent="Panel/MarginContainer/VBoxContainer/Row1" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot11" parent="Panel/MarginContainer/VBoxContainer/Row1" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot12" parent="Panel/MarginContainer/VBoxContainer/Row1" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="Row2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+
+[node name="ItemSlot" parent="Panel/MarginContainer/VBoxContainer/Row2" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot2" parent="Panel/MarginContainer/VBoxContainer/Row2" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot3" parent="Panel/MarginContainer/VBoxContainer/Row2" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot4" parent="Panel/MarginContainer/VBoxContainer/Row2" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot5" parent="Panel/MarginContainer/VBoxContainer/Row2" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot6" parent="Panel/MarginContainer/VBoxContainer/Row2" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot7" parent="Panel/MarginContainer/VBoxContainer/Row2" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot8" parent="Panel/MarginContainer/VBoxContainer/Row2" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot9" parent="Panel/MarginContainer/VBoxContainer/Row2" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot10" parent="Panel/MarginContainer/VBoxContainer/Row2" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot11" parent="Panel/MarginContainer/VBoxContainer/Row2" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot12" parent="Panel/MarginContainer/VBoxContainer/Row2" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="Row3" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+
+[node name="ItemSlot" parent="Panel/MarginContainer/VBoxContainer/Row3" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot2" parent="Panel/MarginContainer/VBoxContainer/Row3" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot3" parent="Panel/MarginContainer/VBoxContainer/Row3" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot4" parent="Panel/MarginContainer/VBoxContainer/Row3" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot5" parent="Panel/MarginContainer/VBoxContainer/Row3" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot6" parent="Panel/MarginContainer/VBoxContainer/Row3" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot7" parent="Panel/MarginContainer/VBoxContainer/Row3" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot8" parent="Panel/MarginContainer/VBoxContainer/Row3" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot9" parent="Panel/MarginContainer/VBoxContainer/Row3" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot10" parent="Panel/MarginContainer/VBoxContainer/Row3" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot11" parent="Panel/MarginContainer/VBoxContainer/Row3" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot12" parent="Panel/MarginContainer/VBoxContainer/Row3" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="Row4" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+
+[node name="ItemSlot" parent="Panel/MarginContainer/VBoxContainer/Row4" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot2" parent="Panel/MarginContainer/VBoxContainer/Row4" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot3" parent="Panel/MarginContainer/VBoxContainer/Row4" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot4" parent="Panel/MarginContainer/VBoxContainer/Row4" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot5" parent="Panel/MarginContainer/VBoxContainer/Row4" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot6" parent="Panel/MarginContainer/VBoxContainer/Row4" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot7" parent="Panel/MarginContainer/VBoxContainer/Row4" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot8" parent="Panel/MarginContainer/VBoxContainer/Row4" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot9" parent="Panel/MarginContainer/VBoxContainer/Row4" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot10" parent="Panel/MarginContainer/VBoxContainer/Row4" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot11" parent="Panel/MarginContainer/VBoxContainer/Row4" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot12" parent="Panel/MarginContainer/VBoxContainer/Row4" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="Row5" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+
+[node name="ItemSlot" parent="Panel/MarginContainer/VBoxContainer/Row5" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot2" parent="Panel/MarginContainer/VBoxContainer/Row5" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot3" parent="Panel/MarginContainer/VBoxContainer/Row5" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot4" parent="Panel/MarginContainer/VBoxContainer/Row5" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot5" parent="Panel/MarginContainer/VBoxContainer/Row5" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot6" parent="Panel/MarginContainer/VBoxContainer/Row5" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot7" parent="Panel/MarginContainer/VBoxContainer/Row5" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot8" parent="Panel/MarginContainer/VBoxContainer/Row5" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot9" parent="Panel/MarginContainer/VBoxContainer/Row5" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot10" parent="Panel/MarginContainer/VBoxContainer/Row5" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot11" parent="Panel/MarginContainer/VBoxContainer/Row5" instance=ExtResource("2_7ngah")]
+layout_mode = 2
+
+[node name="ItemSlot12" parent="Panel/MarginContainer/VBoxContainer/Row5" instance=ExtResource("2_7ngah")]
+layout_mode = 2

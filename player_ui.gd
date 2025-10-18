@@ -23,12 +23,24 @@ func _process(delta: float) -> void:
 		$EnemyInfoContainer.visible = false
 	$FPS.text = str(Engine.get_frames_per_second())
 	
+	
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("exit"):
+		remove_loot_window_if_exists()
+
 func show_hitmarker():
 	hitmarker_timer = .2
 	
-func reparent_loot_window():
+func remove_loot_window_if_exists():
 	for child in get_children():
 		if child.name == "LootWindow":
 			child.queue_free()
 			return
-	#
+			
+func reparent_loot_window():
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	remove_loot_window_if_exists()
+	
+func add_loot_window(ui : LootWindow):
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+	add_child(ui)
