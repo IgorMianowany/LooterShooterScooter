@@ -92,9 +92,13 @@ func _die():
 	is_dead = true
 	#ww()
 
-func _on_loot_range_area_entered(area: Area3D) -> void:\
+func create_loot_window() -> LootWindow:
+	var loot_window = load("res://loot_window.tscn").instantiate()
+	return loot_window
+
+func _on_loot_range_area_entered(area: Area3D) -> void:
 	if is_dead:
-		(area.get_parent() as Player).show_loot_ui($LootWindow)
+		(area.get_parent() as Player).show_loot_ui(create_loot_window())
 
 func _on_loot_range_area_exited(area: Area3D) -> void:
 	if is_dead:

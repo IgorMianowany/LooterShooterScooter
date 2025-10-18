@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://w8aynqu8tt4w" path="res://enemy.gd" id="1_7k104"]
 [ext_resource type="Script" uid="uid://baj3fxdsp6qc7" path="res://hurtbox.gd" id="2_4gyqm"]
-[ext_resource type="Script" uid="uid://xwgrje0jaeph" path="res://loot_window.gd" id="3_qi2p4"]
+[ext_resource type="PackedScene" uid="uid://c5mj8n1fxbpe5" path="res://loot_window.tscn" id="3_qi2p4"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iifgy"]
 radius = 37.391293
@@ -45,20 +45,20 @@ debug_color = Color(0.9697884, 0.115281604, 0.33965302, 0.41960785)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 
-[node name="LootWindow" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("3_qi2p4")
-metadata/_custom_type_script = "uid://xwgrje0jaeph"
-
 [node name="LootRange" type="Area3D" parent="."]
 collision_layer = 0
 collision_mask = 8
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LootRange"]
+
+[node name="LootWindow" parent="." instance=ExtResource("3_qi2p4")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [connection signal="area_entered" from="CritHurtbox" to="CritHurtbox" method="_on_area_entered"]
 [connection signal="area_entered" from="PlayerDetectionRange" to="." method="_on_player_detection_range_area_entered"]

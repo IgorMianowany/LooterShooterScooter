@@ -10,10 +10,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_behavior_recursive = 2
 script = ExtResource("1_eji6k")
 
 [node name="Loot" type="Node" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(558, 97)
+position = Vector2(559, 160)
 texture = ExtResource("2_7ngah")

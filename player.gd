@@ -16,6 +16,7 @@ var player_rotation : Vector3
 var camera_rotation : Vector3
 var aimed_at_enemy : Enemy = null
 var dash_ready : bool = true
+var is_mouse_swallowing_ui_open : bool = false
 
 @export var camera_controller : Camera3D
 @export var mouse_sensitivity : float = 0.15
@@ -62,11 +63,11 @@ func _physics_process(delta: float) -> void:
 	if velocity.x == 0 and velocity.z == 0:
 		$AnimationPlayer.stop()
 	
-	if Input.is_action_pressed("shoot"):
+	if Input.is_action_pressed("shoot") and not is_mouse_swallowing_ui_open:
 		weapon.start_shooting.emit()
 		shoot()
 		
-	if Input.is_action_just_released("shoot"):
+	if Input.is_action_just_released("shoot") and not is_mouse_swallowing_ui_open:
 		weapon.stop_shooting.emit()
 	
 	$PlayerUI.currently_targeted_enemy = $Camera3D/RayCast3D.get_collider()
@@ -75,6 +76,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func _input(event: InputEvent) -> void:
+	if is_mouse_swallowing_ui_open:
+		return
 	if event.is_action_pressed("reload"):
 		reload()
 	if event.is_action_pressed("sprint") and not is_on_floor() and dash_ready:
@@ -98,6 +101,8 @@ func dash():
 	dash_ready = true
 	
 func _unhandled_input(event):
+	if is_mouse_swallowing_ui_open:
+		return
 	mouse_input = event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED
 	if mouse_input:
 		rotation_input = -event.relative.x * mouse_sensitivity
@@ -131,7 +136,12 @@ func hitmark():
 	$PlayerUI.show_hitmarker()
 	
 func show_loot_ui(ui : LootWindow):
-	ui.reparent($PlayerUI)
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+	#ui.reparent($PlayerUI)
+	is_mouse_swallowing_ui_open = true
+	$PlayerUI.add_child(ui)
 	
 func hide_loot_ui(parent : Enemy):
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	$PlayerUI.reparent_loot_window(parent)
+	is_mouse_swallowing_ui_open = true

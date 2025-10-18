@@ -29,6 +29,6 @@ func show_hitmarker():
 func reparent_loot_window(parent : Enemy):
 	for child in get_children():
 		if child.name == "LootWindow":
-			child.reparent(parent)
+			child.queue_free()
 			return
-	
+	#
