@@ -102,4 +102,4 @@ func _on_loot_range_area_entered(area: Area3D) -> void:
 
 func _on_loot_range_area_exited(area: Area3D) -> void:
 	if is_dead:
-		(area.get_parent() as Player).hide_loot_ui(self)
+		(area.get_parent() as Player).hide_loot_ui()
