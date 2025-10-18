@@ -24,6 +24,7 @@ func _shoot():
 		animate_recoil()
 		shot = true
 		var bullet : Bullet = bullet_scene.instantiate()
+		bullet.damage = 100
 		add_child(bullet)
 		bullet.weapon = self
 		bullet.global_position = bullet_spawn.global_position

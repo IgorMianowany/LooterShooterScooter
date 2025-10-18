@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5mj8n1fxbpe5"]
+
+[ext_resource type="Script" uid="uid://xwgrje0jaeph" path="res://loot_window.gd" id="1_eji6k"]
+[ext_resource type="Texture2D" uid="uid://dscfmc1jsdynf" path="res://icon.svg" id="2_7ngah"]
+
+[node name="LootWindow" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eji6k")
+
+[node name="Loot" type="Node" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(558, 97)
+texture = ExtResource("2_7ngah")

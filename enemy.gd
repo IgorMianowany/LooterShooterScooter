@@ -12,6 +12,7 @@ var knockback_chance : float = .05
 var knockback_speed : float = 0
 var knockback_cooldown : float = 2
 var is_dead : bool = false
+var is_looted : bool = false
 	
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -88,5 +89,13 @@ func _on_collision_area_area_entered(area: Area3D) -> void:
 	global_position += knockback_dir * .25
 	
 func _die():
-	print("nic")
-	queue_free()
+	is_dead = true
+	#ww()
+
+func _on_loot_range_area_entered(area: Area3D) -> void:\
+	if is_dead:
+		(area.get_parent() as Player).show_loot_ui($LootWindow)
+
+func _on_loot_range_area_exited(area: Area3D) -> void:
+	if is_dead:
+		(area.get_parent() as Player).hide_loot_ui(self)

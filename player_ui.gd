@@ -25,3 +25,10 @@ func _process(delta: float) -> void:
 	
 func show_hitmarker():
 	hitmarker_timer = .2
+	
+func reparent_loot_window(parent : Enemy):
+	for child in get_children():
+		if child.name == "LootWindow":
+			child.reparent(parent)
+			return
+	

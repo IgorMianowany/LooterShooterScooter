@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=4 uid="uid://cq703l7u06dnl"]
+[gd_scene load_steps=52 format=4 uid="uid://cq703l7u06dnl"]
 
 [ext_resource type="PackedScene" uid="uid://43lpari5m4ea" path="res://enemy.tscn" id="1_roy8y"]
 [ext_resource type="Script" uid="uid://dtggahtoacnqc" path="res://zombie.gd" id="2_eseir"]
@@ -201,6 +201,16 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_bdmaw")
+
+[sub_resource type="Animation" id="Animation_eseir"]
+length = 0.001
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("character-l/root/torso/head")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_7n65w"]
 resource_name = "attack-kick-left"
@@ -681,6 +691,17 @@ tracks/7/path = NodePath("character-l/root/leg-right")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_jmu02"]
+resource_name = "headshot"
+length = 1.0000033
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("character-l/root/torso/head")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, -1, 0.033333335, 1, 0, 0, 0, -1, 0.6, 1, 0.0460604, 0, 0, -0.998939, 0.6333333, 1, 0.0847213, 0, 0, -0.996405, 0.6666667, 1, 0.117017, 0, 0, -0.99313, 0.69945943, 1, 0.130526, 0, 0, -0.991445, 0.73387426, 1, 0.121176, 0, 0, -0.992631, 0.76720726, 1, 0.0972355, 0, 0, -0.995261, 0.8, 1, 0.0648806, 0, 0, -0.997893, 0.83441514, 1, 0.0303641, 0, 0, -0.999539, 0.90108174, 1, 0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_q6mdw"]
 resource_name = "holding-both"
@@ -1823,27 +1844,6 @@ tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
 
-[sub_resource type="Animation" id="Animation_jmu02"]
-resource_name = "headshot"
-length = 1.0000033
-tracks/0/type = "rotation_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("character-l/root/torso/head")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, -1, 0.033333335, 1, 0, 0, 0, -1, 0.06666667, 1, 0.1, 0, 0, -1, 0.6, 1, 0.0460604, 0, 0, -0.998939, 0.6333333, 1, 0.0847213, 0, 0, -0.996405, 0.6666667, 1, 0.117017, 0, 0, -0.99313, 0.69945943, 1, 0.130526, 0, 0, -0.991445, 0.73387426, 1, 0.121176, 0, 0, -0.992631, 0.76720726, 1, 0.0972355, 0, 0, -0.995261, 0.8, 1, 0.0648806, 0, 0, -0.997893, 0.83441514, 1, 0.0303641, 0, 0, -0.999539, 0.90108174, 1, 0, 0, 0, 1)
-
-[sub_resource type="Animation" id="Animation_eseir"]
-length = 0.001
-tracks/0/type = "rotation_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("character-l/root/torso/head")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q5ypp"]
 _data = {
 &"RESET": SubResource("Animation_eseir"),
@@ -1891,6 +1891,9 @@ height = 4.2001953
 radius = 0.9135742
 height = 3.2138672
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_jmu02"]
+radius = 3.5175571
+
 [node name="Zombie" instance=ExtResource("1_roy8y")]
 axis_lock_linear_y = true
 axis_lock_angular_x = true
@@ -1913,17 +1916,17 @@ mesh = SubResource("ArrayMesh_7nqyo")
 skeleton = NodePath("")
 
 [node name="torso" type="MeshInstance3D" parent="character-l/root" index="2"]
-transform = Transform3D(1, 0, 0, 0, 0.9995282, 0.030713025, 0, -0.030713025, 0.9995282, 0, 0.7, 0)
+transform = Transform3D(1, 0, 0, 0, 0.9995282, 0.03071316, 0, -0.03071316, 0.9995282, 0, 0.7, 0)
 mesh = SubResource("ArrayMesh_lnshm")
 skeleton = NodePath("")
 
 [node name="arm-left" type="MeshInstance3D" parent="character-l/root/torso" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.9995282, -0.030713025, 0, 0.030713025, 0.9995282, 0.4, 1.1, -0.0999999)
+transform = Transform3D(1, 0, 0, 0, 0.9995282, -0.03071316, 0, 0.03071316, 0.9995282, 0.4, 1.1, -0.0999999)
 mesh = SubResource("ArrayMesh_x5rsa")
 skeleton = NodePath("")
 
 [node name="arm-right" type="MeshInstance3D" parent="character-l/root/torso" index="1"]
-transform = Transform3D(1, 0, 0, 0, 0.9995282, -0.030713025, 0, 0.030713025, 0.9995282, -0.4, 1.1, -0.0999999)
+transform = Transform3D(1, 0, 0, 0, 0.9995282, -0.03071316, 0, 0.03071316, 0.9995282, -0.4, 1.1, -0.0999999)
 mesh = SubResource("ArrayMesh_ogcpr")
 skeleton = NodePath("")
 
@@ -1937,11 +1940,15 @@ libraries = {
 &"": SubResource("AnimationLibrary_q5ypp")
 }
 
+[node name="Hurtbox" parent="." index="2"]
+visible = false
+
 [node name="CollisionShape3D" parent="Hurtbox" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.029693604, 0.57079184, 0)
 shape = SubResource("BoxShape3D_jmu02")
 
 [node name="CritHurtbox" parent="." index="3"]
+visible = false
 collision_layer = 0
 
 [node name="CollisionShape3D" parent="CritHurtbox" index="0"]
@@ -1961,10 +1968,16 @@ shape = SubResource("CapsuleShape3D_jmu02")
 [node name="PlayerDetectionRange" parent="." index="5"]
 visible = false
 
+[node name="DamageNumbersOrigin" parent="." index="6"]
+visible = false
+
 [node name="CollisionShape3D" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5307617, 0)
 visible = false
 shape = SubResource("CapsuleShape3D_eseir")
+
+[node name="CollisionShape3D" parent="LootRange" index="0"]
+shape = SubResource("SphereShape3D_jmu02")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]

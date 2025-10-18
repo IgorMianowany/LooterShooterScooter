@@ -129,3 +129,9 @@ func reload():
 	
 func hitmark():
 	$PlayerUI.show_hitmarker()
+	
+func show_loot_ui(ui : LootWindow):
+	ui.reparent($PlayerUI)
+	
+func hide_loot_ui(parent : Enemy):
+	$PlayerUI.reparent_loot_window(parent)

@@ -13,6 +13,7 @@ func _physics_process(delta: float) -> void:
 		$AnimationPlayer.play("walk")
 	
 func _die():
+	super()
 	$AnimationPlayer.play("die")
 	
 func take_damage(damage : float, is_crit : bool = false):
@@ -29,7 +30,7 @@ func take_damage(damage : float, is_crit : bool = false):
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "die":
 		await(get_tree().create_timer(1).timeout)
-		queue_free()
+		#queue_free()
 	else:
 		speed = 300
 		knockback_speed = 0
