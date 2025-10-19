@@ -61,48 +61,43 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="ItemSlot15" parent="Panel/MarginContainer/VBoxContainer/Row1" instance=ExtResource("2_7ngah")]
+visible = false
 layout_mode = 2
 
 [node name="ItemSlot16" parent="Panel/MarginContainer/VBoxContainer/Row1" instance=ExtResource("2_7ngah")]
-layout_mode = 2
-
-[node name="ItemSlot17" parent="Panel/MarginContainer/VBoxContainer/Row1" instance=ExtResource("2_7ngah")]
-layout_mode = 2
-
-[node name="ItemSlot18" parent="Panel/MarginContainer/VBoxContainer/Row1" instance=ExtResource("2_7ngah")]
-layout_mode = 2
-
-[node name="ItemSlot2" parent="Panel/MarginContainer/VBoxContainer/Row1" instance=ExtResource("2_7ngah")]
-layout_mode = 2
-
-[node name="ItemSlot3" parent="Panel/MarginContainer/VBoxContainer/Row1" instance=ExtResource("2_7ngah")]
+visible = false
 layout_mode = 2
 
 [node name="ItemSlot4" parent="Panel/MarginContainer/VBoxContainer/Row1" instance=ExtResource("2_7ngah")]
-layout_mode = 2
-
-[node name="ItemSlot5" parent="Panel/MarginContainer/VBoxContainer/Row1" instance=ExtResource("2_7ngah")]
+visible = false
 layout_mode = 2
 
 [node name="ItemSlot6" parent="Panel/MarginContainer/VBoxContainer/Row1" instance=ExtResource("2_7ngah")]
+visible = false
 layout_mode = 2
 
 [node name="ItemSlot7" parent="Panel/MarginContainer/VBoxContainer/Row1" instance=ExtResource("2_7ngah")]
+visible = false
 layout_mode = 2
 
 [node name="ItemSlot8" parent="Panel/MarginContainer/VBoxContainer/Row1" instance=ExtResource("2_7ngah")]
+visible = false
 layout_mode = 2
 
 [node name="ItemSlot9" parent="Panel/MarginContainer/VBoxContainer/Row1" instance=ExtResource("2_7ngah")]
+visible = false
 layout_mode = 2
 
 [node name="ItemSlot10" parent="Panel/MarginContainer/VBoxContainer/Row1" instance=ExtResource("2_7ngah")]
+visible = false
 layout_mode = 2
 
 [node name="ItemSlot11" parent="Panel/MarginContainer/VBoxContainer/Row1" instance=ExtResource("2_7ngah")]
+visible = false
 layout_mode = 2
 
 [node name="ItemSlot12" parent="Panel/MarginContainer/VBoxContainer/Row1" instance=ExtResource("2_7ngah")]
+visible = false
 layout_mode = 2
 
 [node name="Row2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
@@ -148,6 +143,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Row3" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 3

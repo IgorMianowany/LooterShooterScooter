@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bou0rdt75qskc"
-path="res://.godot/imported/4.png-159bfc95828c329ad6669624a1b94423.ctex"
+path="res://.godot/imported/gold.png-cc443771ef629486e0810c0965127684.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/items/4.png"
-dest_files=["res://.godot/imported/4.png-159bfc95828c329ad6669624a1b94423.ctex"]
+source_file="res://textures/items/gold.png"
+dest_files=["res://.godot/imported/gold.png-cc443771ef629486e0810c0965127684.ctex"]
 
 [params]
 

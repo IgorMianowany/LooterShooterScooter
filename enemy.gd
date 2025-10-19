@@ -13,6 +13,15 @@ var knockback_speed : float = 0
 var knockback_cooldown : float = 2
 var is_dead : bool = false
 var is_looted : bool = false
+var possible_loot : Array[Item]
+
+func _ready():
+	var item = Item.new()
+	item.id = 1
+	item.item_name = "Crown"
+	item.quantity = 3
+	item.item_texture = preload("res://textures/items/crown.png")
+	possible_loot.append(item)
 	
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -94,6 +103,7 @@ func _die():
 
 func create_loot_window() -> LootWindow:
 	var loot_window = load("res://loot_window.tscn").instantiate()
+	loot_window.add_item(possible_loot.pick_random())
 	return loot_window
 
 func _on_loot_range_area_entered(area: Area3D) -> void:

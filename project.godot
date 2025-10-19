@@ -55,6 +55,10 @@ enabled=PackedStringArray("res://addons/simplegrasstextured/plugin.cfg")
 
 import/blender/enabled=false
 
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
+
 [input]
 
 forward={

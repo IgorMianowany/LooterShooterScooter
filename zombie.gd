@@ -2,6 +2,7 @@ class_name Zombie
 extends Enemy
 
 func _ready() -> void:
+	super()
 	speed = 300
 	health = 100
 
