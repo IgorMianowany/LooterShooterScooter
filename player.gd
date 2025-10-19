@@ -17,10 +17,14 @@ var camera_rotation : Vector3
 var aimed_at_enemy : Enemy = null
 var dash_ready : bool = true
 var is_mouse_swallowing_ui_open : bool = false
+var equipment : Array[Item] : get = get_equipment
 
 @export var camera_controller : Camera3D
 @export var mouse_sensitivity : float = 0.15
 @export var weapon : Weapon
+
+func get_equipment() -> Array[Item]:
+	return PlayerInfo.equipment
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -90,6 +94,8 @@ func _input(event: InputEvent) -> void:
 		weapon.visible = false
 		weapon = $Camera3D/WeaponsBackpack.weapon_2
 		weapon.visible = true
+	if event.is_action_pressed("open_equipment"):
+		show_equipment()
 	
 func dash():
 	dash_ready = false
@@ -107,8 +113,9 @@ func _unhandled_input(event):
 	if mouse_input:
 		rotation_input = -event.relative.x * mouse_sensitivity
 		tilt_input = -event.relative.y * mouse_sensitivity
-	if event.is_action_pressed("exit"):
+	if event.is_action_pressed("close_game"):
 		_exit()
+		#pass
 
 func update_camera(delta):
 	mouse_rotation.x += tilt_input * delta
@@ -146,3 +153,7 @@ func hide_loot_ui():
 	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	$PlayerUI.reparent_loot_window()
 	is_mouse_swallowing_ui_open = false
+	
+func show_equipment():
+	get_tree().paused = true
+	$PlayerUI.show_equipment()

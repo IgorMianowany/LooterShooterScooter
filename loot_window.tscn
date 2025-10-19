@@ -52,12 +52,15 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="ItemSlot" parent="Panel/MarginContainer/VBoxContainer/Row1" instance=ExtResource("2_7ngah")]
+visible = false
 layout_mode = 2
 
 [node name="ItemSlot13" parent="Panel/MarginContainer/VBoxContainer/Row1" instance=ExtResource("2_7ngah")]
+visible = false
 layout_mode = 2
 
 [node name="ItemSlot14" parent="Panel/MarginContainer/VBoxContainer/Row1" instance=ExtResource("2_7ngah")]
+visible = false
 layout_mode = 2
 
 [node name="ItemSlot15" parent="Panel/MarginContainer/VBoxContainer/Row1" instance=ExtResource("2_7ngah")]

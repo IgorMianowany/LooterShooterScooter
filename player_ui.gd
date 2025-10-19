@@ -27,6 +27,8 @@ func _process(delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("exit"):
 		remove_loot_window_if_exists()
+		get_tree().paused = false
+
 
 func show_hitmarker():
 	hitmarker_timer = .2
@@ -44,3 +46,9 @@ func reparent_loot_window():
 func add_loot_window(ui : LootWindow):
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	add_child(ui)
+	
+func show_equipment():
+	var loot_window = load("res://loot_window.tscn").instantiate()
+	for item in PlayerInfo.equipment:
+		loot_window.add_item(item)
+	add_child(loot_window)
