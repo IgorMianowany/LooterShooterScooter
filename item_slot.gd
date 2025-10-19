@@ -6,7 +6,7 @@ var item : Item
 func _on_texture_button_pressed() -> void:
 	print(get_parent().name +  " " + item.item_name)
 	if not item.is_taken:
-		PlayerInfo.equipment.append(item)
+		PlayerInfo.add_item_to_equipment(item)
 		item.is_taken = true
 		queue_free()
 	
