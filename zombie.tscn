@@ -1916,17 +1916,17 @@ mesh = SubResource("ArrayMesh_7nqyo")
 skeleton = NodePath("")
 
 [node name="torso" type="MeshInstance3D" parent="character-l/root" index="2"]
-transform = Transform3D(1, 0, 0, 0, 0.9995282, 0.03071316, 0, -0.03071316, 0.9995282, 0, 0.7, 0)
+transform = Transform3D(1, 0, 0, 0, 0.9995282, 0.030713167, 0, -0.030713167, 0.9995282, 0, 0.7, 0)
 mesh = SubResource("ArrayMesh_lnshm")
 skeleton = NodePath("")
 
 [node name="arm-left" type="MeshInstance3D" parent="character-l/root/torso" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.9995282, -0.03071316, 0, 0.03071316, 0.9995282, 0.4, 1.1, -0.0999999)
+transform = Transform3D(1, 0, 0, 0, 0.9995282, -0.030713167, 0, 0.030713167, 0.9995282, 0.4, 1.1, -0.0999999)
 mesh = SubResource("ArrayMesh_x5rsa")
 skeleton = NodePath("")
 
 [node name="arm-right" type="MeshInstance3D" parent="character-l/root/torso" index="1"]
-transform = Transform3D(1, 0, 0, 0, 0.9995282, -0.03071316, 0, 0.03071316, 0.9995282, -0.4, 1.1, -0.0999999)
+transform = Transform3D(1, 0, 0, 0, 0.9995282, -0.030713167, 0, 0.030713167, 0.9995282, -0.4, 1.1, -0.0999999)
 mesh = SubResource("ArrayMesh_ogcpr")
 skeleton = NodePath("")
 

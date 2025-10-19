@@ -22,7 +22,13 @@ func _ready():
 	item.item_name = "Crown"
 	item.quantity = 3
 	item.item_texture = preload("res://textures/items/crown.png")
+	var item2 = Item.new()
+	item2.id = 2
+	item2.item_name = "Gold"
+	item2.quantity = 2
+	item2.item_texture = preload("res://textures/items/gold.png")	
 	possible_loot.append(item)
+	possible_loot.append(item2)
 	loot.append(possible_loot.pick_random())
 	
 func _physics_process(delta: float) -> void:
