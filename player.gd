@@ -156,4 +156,5 @@ func hide_loot_ui():
 	
 func show_equipment():
 	get_tree().paused = true
+	#is_mouse_swallowing_ui_open = true
 	$PlayerUI.show_equipment()

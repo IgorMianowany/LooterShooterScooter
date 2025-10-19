@@ -171,15 +171,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.160381, 0.8957143, -7.0282
 [node name="Zombie10" parent="." instance=ExtResource("4_aqk2v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.383634, 0.8957143, 185.01723)
 
-[node name="Zombie12" parent="." instance=ExtResource("4_aqk2v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.99236, 0.8957143, 171.12154)
-
-[node name="Zombie13" parent="." instance=ExtResource("4_aqk2v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.03049, 0.8957143, 149.78815)
-
-[node name="Zombie11" parent="." instance=ExtResource("4_aqk2v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.473214, 0.8957143, 162.72862)
-
 [node name="Zombie5" parent="." instance=ExtResource("4_aqk2v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.160381, 0.8957143, -19.047022)
 

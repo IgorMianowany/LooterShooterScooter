@@ -28,6 +28,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("exit"):
 		remove_loot_window_if_exists()
 		get_tree().paused = false
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 func show_hitmarker():
@@ -48,6 +49,7 @@ func add_loot_window(ui : LootWindow):
 	add_child(ui)
 	
 func show_equipment():
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	var loot_window = load("res://loot_window.tscn").instantiate()
 	for item in PlayerInfo.equipment:
 		loot_window.add_item(item)
