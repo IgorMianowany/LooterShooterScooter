@@ -5,8 +5,10 @@ var item : Item
 var current_inventory : Inventory
 var new_inventory : Inventory
 var hover_style_box : StyleBoxFlat
+var normal_style_box: StyleBoxFlat
 
 func _ready():
+	normal_style_box = $MarginContainer/Panel.get_theme_stylebox("panel")
 	hover_style_box = $MarginContainer/Panel.get_theme_stylebox("panel").duplicate()
 	hover_style_box.border_width_top = 1
 	hover_style_box.border_width_left = 1
@@ -37,6 +39,7 @@ func _on_texture_button_mouse_entered() -> void:
 func _on_texture_button_mouse_exited() -> void:
 	$MarginContainer/Selected.visible = false
 	$MarginContainer/Panel.remove_theme_stylebox_override("panel")
+	$MarginContainer/Panel.add_theme_stylebox_override("panel", normal_style_box)
 	#$MarginContainer/Panel.get_theme_stylebox("panel").border_width_right = 0
 	#$MarginContainer/Panel.get_theme_stylebox("panel").border_width_left = 0
 	#$MarginContainer/Panel.get_theme_stylebox("panel").border_width_top = 0
