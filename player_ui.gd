@@ -3,6 +3,7 @@ extends Control
 var currently_targeted_enemy : Area3D
 var enemy : Enemy
 var hitmarker_timer : float = .2
+var is_mouse_swallowing_ui_open : bool = false
 
 func set_ammo(current : int, max_ammo : int, reserve : int, is_reloading : bool):
 	var text_to_set : String = "reloading" if is_reloading else str(current) + "/" + str(max_ammo) + "   |   " +  str(reserve)
@@ -35,16 +36,19 @@ func show_hitmarker():
 	hitmarker_timer = .2
 	
 func remove_loot_window_if_exists():
+	is_mouse_swallowing_ui_open = false
 	for child in get_children():
 		if child.name == "LootWindow":
 			child.queue_free()
 			return
 			
 func reparent_loot_window():
+	is_mouse_swallowing_ui_open = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	remove_loot_window_if_exists()
 	
 func add_loot_window(ui : LootWindow):
+	is_mouse_swallowing_ui_open = true
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	add_child(ui)
 	

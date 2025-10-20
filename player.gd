@@ -36,6 +36,7 @@ func _exit():
 	
 func _process(_delta: float) -> void:
 	$PlayerUI.set_ammo(weapon._get_current_magazine_size(), weapon._get_max_magazine_size(), weapon._get_ammo_reserve(), weapon.is_reloading)
+	is_mouse_swallowing_ui_open = $PlayerUI.is_mouse_swallowing_ui_open
 	
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -147,14 +148,12 @@ func hitmark():
 func show_loot_ui(ui : LootWindow):
 	#Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	#maybe do this on tree_exited/tree_exiting signal to make sure it's called
-	is_mouse_swallowing_ui_open = true
 	$PlayerUI.add_loot_window(ui)
 	#$PlayerUI.add_child(ui)
 	
 func hide_loot_ui():
 	$PlayerUI.reparent_loot_window()
 	#$Inventory.close_inventory()
-	is_mouse_swallowing_ui_open = false
 	
 func show_equipment():
 	get_tree().paused = true
