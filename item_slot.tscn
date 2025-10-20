@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bou0rdt75qskc" path="res://textures/items/gold.png" id="2_0myub"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n6cxc"]
-bg_color = Color(0.6, 0.6, 0.6, 0.13725491)
+bg_color = Color(11.708403, 11.708403, 11.708403, 0.13725491)
 
 [node name="ItemSlot" type="Control"]
 custom_minimum_size = Vector2(50, 50)
@@ -18,6 +18,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 script = ExtResource("1_i83bl")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -33,10 +34,12 @@ offset_right = 25.0
 offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Panel" type="Panel" parent="MarginContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_n6cxc")
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer"]
@@ -44,6 +47,7 @@ visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 texture = ExtResource("1_n6cxc")
 stretch_mode = 2
 
@@ -56,6 +60,18 @@ stretch_mode = 0
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
+mouse_behavior_recursive = 1
 text = "12"
 
+[node name="Selected" type="Panel" parent="MarginContainer"]
+visible = false
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_n6cxc")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/TextureButton" to="." method="_on_texture_button_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/TextureButton" to="." method="_on_texture_button_mouse_exited"]
 [connection signal="pressed" from="MarginContainer/TextureButton" to="." method="_on_texture_button_pressed"]
