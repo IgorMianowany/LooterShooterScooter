@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctj7ciueu1yd5"]
+[gd_scene load_steps=5 format=3 uid="uid://ctj7ciueu1yd5"]
 
 [ext_resource type="Script" uid="uid://cxb5iuf8tjn21" path="res://hut.gd" id="1_d8ac1"]
 [ext_resource type="PackedScene" uid="uid://wawn33jq1b8v" path="res://models/Hut/LogHutV1.1.fbx" id="1_jt3o7"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_d8ac1"]
+radius = 11.802892
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jt3o7"]
 size = Vector3(14.810715, 15.63385, 12.431465)
@@ -9,8 +12,17 @@ size = Vector3(14.810715, 15.63385, 12.431465)
 [node name="Hut" type="StaticBody3D"]
 script = ExtResource("1_d8ac1")
 
+[node name="LootRange" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LootRange"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.304986, -2.0877008)
+shape = SubResource("SphereShape3D_d8ac1")
+
 [node name="LogHutV1_1" parent="." instance=ExtResource("1_jt3o7")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3359604, 4.512726, -0.3413353)
 shape = SubResource("BoxShape3D_jt3o7")
+
+[connection signal="area_entered" from="LootRange" to="." method="_on_loot_range_area_entered"]
+[connection signal="area_exited" from="LootRange" to="." method="_on_loot_range_area_exited"]
