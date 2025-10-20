@@ -48,9 +48,9 @@ func add_loot_window(ui : LootWindow):
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	add_child(ui)
 	
-func show_equipment():
+func show_equipment(items : Array[Item]):
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	var loot_window = load("res://loot_window.tscn").instantiate()
-	for item in PlayerInfo.equipment:
+	for item in items:
 		loot_window.add_item(item)
 	add_child(loot_window)

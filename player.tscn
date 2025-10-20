@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3r7x5nnilava"]
+[gd_scene load_steps=10 format=3 uid="uid://c3r7x5nnilava"]
 
 [ext_resource type="PackedScene" uid="uid://cb7jkmm5jny8i" path="res://models/character_models/character-a.glb" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://xkheiw2w0x41" path="res://player.gd" id="2_onrkg"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://o1yl32ljhypt" path="res://player_ui.tscn" id="3_i3pqv"]
 [ext_resource type="PackedScene" uid="uid://bhwpngou3qpga" path="res://assault_rifle.tscn" id="5_1jxqw"]
 [ext_resource type="PackedScene" uid="uid://t218voefpyow" path="res://pistol.tscn" id="5_2hs0m"]
+[ext_resource type="PackedScene" uid="uid://b4youdj4xpnb3" path="res://inventory.tscn" id="7_1jxqw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
 radius = 0.966793
@@ -74,3 +75,5 @@ monitoring = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6401591, 0)
 shape = SubResource("SphereShape3D_sweqy")
+
+[node name="Inventory" parent="." index="6" instance=ExtResource("7_1jxqw")]

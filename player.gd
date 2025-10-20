@@ -18,6 +18,7 @@ var aimed_at_enemy : Enemy = null
 var dash_ready : bool = true
 var is_mouse_swallowing_ui_open : bool = false
 var equipment : Array[Item] : get = get_equipment
+var inventory : Inventory
 
 @export var camera_controller : Camera3D
 @export var mouse_sensitivity : float = 0.15
@@ -28,6 +29,7 @@ func get_equipment() -> Array[Item]:
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	inventory = $Inventory
 	
 func _exit():
 	get_tree().quit()
@@ -150,11 +152,12 @@ func show_loot_ui(ui : LootWindow):
 	#$PlayerUI.add_child(ui)
 	
 func hide_loot_ui():
-	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	$PlayerUI.reparent_loot_window()
+	#$Inventory.close_inventory()
 	is_mouse_swallowing_ui_open = false
 	
 func show_equipment():
 	get_tree().paused = true
-	#is_mouse_swallowing_ui_open = true
-	$PlayerUI.show_equipment()
+	print($Inventory.items)
+	$PlayerUI.show_equipment($Inventory.items)
+	#$Inventory.show_inventory()
