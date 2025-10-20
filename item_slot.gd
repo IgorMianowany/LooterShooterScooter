@@ -7,6 +7,8 @@ var new_inventory : Inventory
 
 func _on_texture_button_pressed() -> void:
 	print(get_parent().name +  " " + item.item_name)
+	if new_inventory == null:
+		return
 	new_inventory.add_item((current_inventory.take_item(item)))
 	queue_free()
 	#if not item.is_taken:
