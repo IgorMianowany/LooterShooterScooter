@@ -48,11 +48,6 @@ func reparent_loot_window():
 	is_mouse_swallowing_ui_open = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	remove_loot_window_if_exists()
-	
-#func show_player_inventory(player_loot_window : LootWindow):
-	#is_mouse_swallowing_ui_open = true
-	#Input.mouse_mode = Input.MOUSE_MODE_CONFINED
-	#$Inventories.add_child(player_loot_window)
 
 func add_loot_window(player_loot_window : LootWindow, new_loot_window : LootWindow):
 	is_mouse_swallowing_ui_open = true

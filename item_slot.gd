@@ -16,14 +16,17 @@ func _ready():
 	hover_style_box.border_width_bottom = 1
 	hover_style_box.border_color = Color(0.775, 0.775, 0.775, 1.0)
 	$MarginContainer/Selected.visible = false
+	#EventBus.inventory_changed.connect(update_item_info)
 
 func _on_texture_button_pressed() -> void:
 	if new_inventory == null:
 		return
 	new_inventory.add_item((current_inventory.take_item(item)))
+	EventBus.inventory_changed.emit()
 	queue_free()
 
 func update_item_info():
+	#if item == null: return
 	$MarginContainer/TextureButton.texture_normal = item.item_texture
 	$MarginContainer/Label.text = str(item.quantity)
 

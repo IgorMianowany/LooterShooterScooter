@@ -115,6 +115,7 @@ func _die():
 	$CollisionShape3D.set_deferred("disabled", true)
 
 func create_loot_window() -> LootWindow:
+	print("JESTEM W ENEMY SCRIPT A NIE POWINIENEM BYĆ WYWOŁANY DUPA DUPA DUPA")
 	if inventory.items.size() == 0:
 		return
 	var loot_window = load("res://loot_window.tscn").instantiate()

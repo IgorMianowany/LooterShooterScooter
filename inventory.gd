@@ -3,6 +3,7 @@ extends Node3D
 
 var items : Array[Item]
 var can_open_inventory : bool = false
+signal new_item_added
 
 func _ready():
 	var item = Item.new()
@@ -31,6 +32,8 @@ func add_item(new_item : Item):
 			item.quantity += new_item.quantity
 			return
 	items.append(new_item)
+	new_item_added.emit(new_item)
+	
 	
 func show_inventory():
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED

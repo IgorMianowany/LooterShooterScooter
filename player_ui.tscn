@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://o1yl32ljhypt"]
+[gd_scene load_steps=7 format=3 uid="uid://o1yl32ljhypt"]
 
 [ext_resource type="Script" uid="uid://cc6itckemlmc5" path="res://player_ui.gd" id="1_5m0x8"]
 [ext_resource type="Texture2D" uid="uid://b1uetiius72s8" path="res://crosshair.png" id="1_lwipk"]
 [ext_resource type="Texture2D" uid="uid://b22ix4p4cj80q" path="res://models/Textures/healthbarProgress.png" id="2_654h1"]
 [ext_resource type="Texture2D" uid="uid://dnqxfsl4gq0s7" path="res://models/Textures/healthbarUnder.png" id="2_pc08v"]
 [ext_resource type="Texture2D" uid="uid://dcxu7xrsg2spo" path="res://models/Textures/hitmarker.png" id="5_tybkg"]
-[ext_resource type="PackedScene" uid="uid://c5mj8n1fxbpe5" path="res://loot_window.tscn" id="6_a4em4"]
 
 [sub_resource type="Theme" id="Theme_654h1"]
 
@@ -114,11 +113,3 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 400
 alignment = 1
-
-[node name="LootWindow" parent="Inventories" instance=ExtResource("6_a4em4")]
-visible = false
-layout_mode = 2
-
-[node name="LootWindow2" parent="Inventories" instance=ExtResource("6_a4em4")]
-visible = false
-layout_mode = 2
