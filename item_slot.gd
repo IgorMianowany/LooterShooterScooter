@@ -18,7 +18,6 @@ func _ready():
 	$MarginContainer/Selected.visible = false
 
 func _on_texture_button_pressed() -> void:
-	print(get_parent().name +  " " + item.item_name)
 	if new_inventory == null:
 		return
 	new_inventory.add_item((current_inventory.take_item(item)))
@@ -31,16 +30,8 @@ func update_item_info():
 func _on_texture_button_mouse_entered() -> void:
 	$MarginContainer/Selected.visible = true
 	$MarginContainer/Panel.add_theme_stylebox_override("panel", hover_style_box)
-	#$MarginContainer/Panel.get_theme_stylebox("panel").border_width_right = 1
-	#$MarginContainer/Panel.get_theme_stylebox("panel").border_width_left = 1
-	#$MarginContainer/Panel.get_theme_stylebox("panel").border_width_top = 1
-	#$MarginContainer/Panel.get_theme_stylebox("panel").border_width_bottom = 1
 
 func _on_texture_button_mouse_exited() -> void:
 	$MarginContainer/Selected.visible = false
 	$MarginContainer/Panel.remove_theme_stylebox_override("panel")
 	$MarginContainer/Panel.add_theme_stylebox_override("panel", normal_style_box)
-	#$MarginContainer/Panel.get_theme_stylebox("panel").border_width_right = 0
-	#$MarginContainer/Panel.get_theme_stylebox("panel").border_width_left = 0
-	#$MarginContainer/Panel.get_theme_stylebox("panel").border_width_top = 0
-	#$MarginContainer/Panel.get_theme_stylebox("panel").border_width_bottom = 0
