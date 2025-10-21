@@ -16,7 +16,7 @@ func _ready():
 	item2.item_texture = preload("res://textures/items/gold.png")
 	items.append(item)
 	items.append(item2)
-
+	
 func take_item(item : Item) -> Item:
 	return items.pop_at(items.find(item))
 
@@ -39,3 +39,12 @@ func close_inventory():
 		if child is LootWindow:
 			child.queue_free()
 			return
+			
+
+func create_loot_window(new_inventory : Inventory) -> LootWindow:
+	var loot_window = load("res://loot_window.tscn").instantiate()
+	loot_window.current_inventory = self
+	loot_window.new_inventory = new_inventory
+	for item in items:
+		loot_window.add_item(item)
+	return loot_window

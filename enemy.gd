@@ -14,9 +14,10 @@ var knockback_cooldown : float = 2
 var is_dead : bool = false
 var is_looted : bool = false
 var possible_loot : Array[Item]
-var loot : Array[Item]
+var inventory : Inventory
 
 func _ready():
+	inventory = $Inventory
 	var item = Item.new()
 	item.id = 1
 	item.item_name = "Crown"
@@ -29,7 +30,7 @@ func _ready():
 	item2.item_texture = preload("res://textures/items/gold.png")	
 	possible_loot.append(item)
 	possible_loot.append(item2)
-	loot.append(possible_loot.pick_random())
+	inventory.add_item(possible_loot.pick_random())
 	
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -53,7 +54,6 @@ func take_damage(damage : float, is_crit : bool = false):
 	_display_damage(damage, is_crit)
 	EventBus.enemy_hit.emit(health <= 0)
 	if health <= 0:
-		
 		_die()
 
 func _on_player_detection_range_area_entered(area: Area3D) -> void:
@@ -113,21 +113,20 @@ func _die():
 	$CollisionShape3D.set_deferred("disabled", true)
 
 func create_loot_window() -> LootWindow:
-	if loot.size() == 0:
+	if inventory.items.size() == 0:
 		return
 	var loot_window = load("res://loot_window.tscn").instantiate()
-	for item in loot:
-		if not item.is_taken:
-			loot_window.add_item(item)
+	for item in inventory.items:
+		loot_window.add_item(item)
 	return loot_window
 
-func _on_loot_range_area_entered(area: Area3D) -> void:
+func _on_loot_range_area_entered(_area: Area3D) -> void:
 	if is_dead:
-		(area.get_parent() as Player).show_loot_ui(create_loot_window())
+		player.show_loot_ui(inventory.create_loot_window(player.inventory))
 
-func _on_loot_range_area_exited(area: Area3D) -> void:
+func _on_loot_range_area_exited(_area: Area3D) -> void:
 	if is_dead:
-		(area.get_parent() as Player).hide_loot_ui()
-		if loot.filter(func(item): return not item.is_taken).size() == 0:
+		player.hide_loot_ui()
+		if inventory.items.is_empty():
 			$LootRange.set_deferred("monitoring", false)
 			

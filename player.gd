@@ -146,14 +146,10 @@ func show_loot_ui(ui : LootWindow):
 	#Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	#maybe do this on tree_exited/tree_exiting signal to make sure it's called
 	$PlayerUI.add_loot_window(ui)
-	#$PlayerUI.add_child(ui)
 	
 func hide_loot_ui():
 	$PlayerUI.reparent_loot_window()
-	#$Inventory.close_inventory()
 	
 func show_equipment():
 	get_tree().paused = true
-	print($Inventory.items)
 	$PlayerUI.show_equipment($Inventory.items)
-	#$Inventory.show_inventory()
