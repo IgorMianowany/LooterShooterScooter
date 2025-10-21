@@ -10,6 +10,3 @@ var bullet : Bullet
 func _process(_delta: float) -> void:
 	if enemies_already_hit.size() >= max_hits:
 		queue_free()
-		
-func hitmark():
-	bullet.hitmark()

@@ -51,7 +51,9 @@ func _process(delta: float) -> void:
 func take_damage(damage : float, is_crit : bool = false):
 	health -= damage
 	_display_damage(damage, is_crit)
+	EventBus.enemy_hit.emit(health <= 0)
 	if health <= 0:
+		
 		_die()
 
 func _on_player_detection_range_area_entered(area: Area3D) -> void:

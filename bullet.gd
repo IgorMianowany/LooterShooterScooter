@@ -13,7 +13,8 @@ func _ready() -> void:
 	set_as_top_level(true)
 	direction = global_position.direction_to($Tip.global_position)
 	$Hitbox.bullet = self
-	$Hitbox.damage = damage
+	#$Hitbox.damage = damage
+	$Hitbox.damage = 10
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -24,6 +25,3 @@ func _process(delta: float) -> void:
 		
 func _physics_process(delta: float) -> void:
 	global_position += direction * speed * delta
-	
-func hitmark():
-	weapon.hitmark()

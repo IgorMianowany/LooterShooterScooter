@@ -43,6 +43,7 @@ config/icon="res://icon.svg"
 
 SimpleGrass="*res://addons/simplegrasstextured/singleton.tscn"
 PlayerInfo="*res://player_info_global.gd"
+EventBus="*res://event_bus.gd"
 
 [display]
 

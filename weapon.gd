@@ -30,6 +30,3 @@ func _get_max_magazine_size() -> int:
 	return max_magazine_size
 func _get_ammo_reserve() -> int:
 	return ammo_reserve
-	
-func hitmark():
-	player.hitmark()

@@ -5,6 +5,9 @@ var enemy : Enemy
 var hitmarker_timer : float = .2
 var is_mouse_swallowing_ui_open : bool = false
 
+func _ready():
+	EventBus.enemy_hit.connect(show_hitmarker)
+
 func set_ammo(current : int, max_ammo : int, reserve : int, is_reloading : bool):
 	var text_to_set : String = "reloading" if is_reloading else str(current) + "/" + str(max_ammo) + "   |   " +  str(reserve)
 	$MarginContainer/AmmoText.text = text_to_set
@@ -32,7 +35,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
-func show_hitmarker():
+func show_hitmarker(is_kill_shot : bool):
+	$MarginContainer2/MarginContainer/Hitmarker.modulate = Color.RED if is_kill_shot else Color.WHITE
 	hitmarker_timer = .2
 	
 func remove_loot_window_if_exists():

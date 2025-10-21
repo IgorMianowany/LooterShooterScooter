@@ -142,9 +142,6 @@ func shoot():
 func reload():
 	weapon._reload()
 	
-func hitmark():
-	$PlayerUI.show_hitmarker()
-	
 func show_loot_ui(ui : LootWindow):
 	#Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	#maybe do this on tree_exited/tree_exiting signal to make sure it's called

@@ -9,4 +9,3 @@ func _on_area_entered(area: Area3D) -> void:
 		hitbox.enemies_already_hit.append(get_parent())
 		owner.take_damage(hitbox.damage if not is_crit else hitbox.damage * 2, is_crit)
 		
-		hitbox.hitmark()
