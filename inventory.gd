@@ -2,6 +2,7 @@ class_name Inventory
 extends Node3D
 
 var items : Array[Item]
+var can_open_inventory : bool = false
 
 func _ready():
 	var item = Item.new()
@@ -17,6 +18,10 @@ func _ready():
 	items.append(item)
 	items.append(item2)
 	
+func _set_collision_shape_radius(rad : float):
+	$LootRange/CollisionShape3D.shape = SphereShape3D.new()
+	$LootRange/CollisionShape3D.shape.radius = rad
+
 func take_item(item : Item) -> Item:
 	return items.pop_at(items.find(item))
 
@@ -39,7 +44,6 @@ func close_inventory():
 		if child is LootWindow:
 			child.queue_free()
 			return
-			
 
 func create_loot_window(new_inventory : Inventory) -> LootWindow:
 	var loot_window = load("res://loot_window.tscn").instantiate()
@@ -48,3 +52,11 @@ func create_loot_window(new_inventory : Inventory) -> LootWindow:
 	for item in items:
 		loot_window.add_item(item)
 	return loot_window
+	
+func _on_loot_range_area_entered(area: Area3D) -> void:
+	var player = area.get_parent() as Player
+	if can_open_inventory:
+		player.show_loot_ui(create_loot_window(player.inventory))
+
+func _on_loot_range_area_exited(area: Area3D) -> void:
+	(area.get_parent() as Player).hide_loot_ui()

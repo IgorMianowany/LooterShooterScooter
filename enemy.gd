@@ -31,6 +31,7 @@ func _ready():
 	possible_loot.append(item)
 	possible_loot.append(item2)
 	inventory.add_item(possible_loot.pick_random())
+	inventory._set_collision_shape_radius(3.518)
 	
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -109,6 +110,7 @@ func _on_collision_area_area_entered(area: Area3D) -> void:
 	
 func _die():
 	is_dead = true
+	$Inventory.can_open_inventory = true
 	await(get_tree().create_timer(2).timeout)
 	$CollisionShape3D.set_deferred("disabled", true)
 
@@ -119,14 +121,14 @@ func create_loot_window() -> LootWindow:
 	for item in inventory.items:
 		loot_window.add_item(item)
 	return loot_window
-
-func _on_loot_range_area_entered(_area: Area3D) -> void:
-	if is_dead:
-		player.show_loot_ui(inventory.create_loot_window(player.inventory))
-
-func _on_loot_range_area_exited(_area: Area3D) -> void:
-	if is_dead:
-		player.hide_loot_ui()
-		if inventory.items.is_empty():
-			$LootRange.set_deferred("monitoring", false)
+#
+#func _on_loot_range_area_entered(_area: Area3D) -> void:
+	#if is_dead:
+		#player.show_loot_ui(inventory.create_loot_window(player.inventory))
+#
+#func _on_loot_range_area_exited(_area: Area3D) -> void:
+	#if is_dead:
+		#player.hide_loot_ui()
+		#if inventory.items.is_empty():
+			#$LootRange.set_deferred("monitoring", false)
 			

@@ -4,3 +4,12 @@
 
 [node name="Inventory" type="Node3D"]
 script = ExtResource("1_pohso")
+
+[node name="LootRange" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LootRange"]
+
+[connection signal="area_entered" from="LootRange" to="." method="_on_loot_range_area_entered"]
+[connection signal="area_exited" from="LootRange" to="." method="_on_loot_range_area_exited"]

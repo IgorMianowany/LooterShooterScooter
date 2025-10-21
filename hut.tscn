@@ -14,17 +14,20 @@ size = Vector3(14.810715, 15.63385, 12.431465)
 script = ExtResource("1_d8ac1")
 
 [node name="LootRange" type="Area3D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LootRange"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.304986, -2.0877008)
+visible = false
 shape = SubResource("SphereShape3D_d8ac1")
 
 [node name="LogHutV1_1" parent="." instance=ExtResource("1_jt3o7")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3359604, 4.512726, -0.3413353)
+visible = false
 shape = SubResource("BoxShape3D_jt3o7")
 
 [node name="Inventory" parent="." instance=ExtResource("3_s63r3")]
