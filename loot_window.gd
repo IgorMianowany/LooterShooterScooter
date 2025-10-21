@@ -3,11 +3,15 @@ extends Control
 
 var current_inventory : Inventory
 var new_inventory : Inventory
+var row1 : HBoxContainer
+var rows : VBoxContainer
+var label : Label
 
 func _ready() -> void:
 	EventBus.inventory_changed.connect(update_items)
 	current_inventory.new_item_added.connect(add_item)
-	#EventBus.inventory_changed.connect(add_missing_items)
+	label = find_child("Owner", true)
+	label.text = current_inventory.get_parent().name
 
 func add_item(item : Item):
 	var item_slot = load("res://item_slot.tscn").instantiate()
@@ -15,15 +19,16 @@ func add_item(item : Item):
 	item_slot.new_inventory = new_inventory
 	item_slot.item = item
 	item_slot.update_item_info()
-	$Panel/MarginContainer/VBoxContainer/Row1.add_child(item_slot)
-
-#func add_missing_items():
-	#if new_inventory.items.size() > $Panel/MarginContainer/VBoxContainer/Row1.get_children().size():
-		#print(new_inventory.get_parent().name)
 	
+	## TODO logic for placing items in correct rows would go here
+	if row1 == null:
+		row1 = find_child("Row1", true)
+	row1.add_child(item_slot)
 	
 func update_items():
-	for row in $Panel/MarginContainer/VBoxContainer.get_children():
+	if rows == null:
+		rows = find_child("Rows", true)
+	for row in rows.get_children():
 		for item_slot in row.get_children():
 			(item_slot as ItemSlot).update_item_info()
 	

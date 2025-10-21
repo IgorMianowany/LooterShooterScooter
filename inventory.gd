@@ -33,8 +33,7 @@ func add_item(new_item : Item):
 			return
 	items.append(new_item)
 	new_item_added.emit(new_item)
-	
-	
+
 func show_inventory():
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	var loot_window = load("res://loot_window.tscn").instantiate()
