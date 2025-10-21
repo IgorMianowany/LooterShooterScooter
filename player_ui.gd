@@ -41,24 +41,28 @@ func show_hitmarker(is_kill_shot : bool):
 	
 func remove_loot_window_if_exists():
 	is_mouse_swallowing_ui_open = false
-	for child in get_children():
-		if child.name == "LootWindow":
-			child.queue_free()
-			return
+	for child in $Inventories.get_children():
+		child.queue_free()
 			
 func reparent_loot_window():
 	is_mouse_swallowing_ui_open = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	remove_loot_window_if_exists()
 	
-func add_loot_window(ui : LootWindow):
+#func show_player_inventory(player_loot_window : LootWindow):
+	#is_mouse_swallowing_ui_open = true
+	#Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+	#$Inventories.add_child(player_loot_window)
+
+func add_loot_window(player_loot_window : LootWindow, new_loot_window : LootWindow):
 	is_mouse_swallowing_ui_open = true
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
-	add_child(ui)
+	$Inventories.add_child(player_loot_window)
+	$Inventories.add_child(new_loot_window)
 	
 func show_equipment(items : Array[Item]):
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	var loot_window = load("res://loot_window.tscn").instantiate()
 	for item in items:
 		loot_window.add_item(item)
-	add_child(loot_window)
+	$Inventories.add_child(loot_window)

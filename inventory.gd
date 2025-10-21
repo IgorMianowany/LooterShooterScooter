@@ -56,7 +56,7 @@ func create_loot_window(new_inventory : Inventory) -> LootWindow:
 func _on_loot_range_area_entered(area: Area3D) -> void:
 	var player = area.get_parent() as Player
 	if can_open_inventory:
-		player.show_loot_ui(create_loot_window(player.inventory))
+		player.show_loot_ui(self ,create_loot_window(player.inventory))
 
 func _on_loot_range_area_exited(area: Area3D) -> void:
 	(area.get_parent() as Player).hide_loot_ui()

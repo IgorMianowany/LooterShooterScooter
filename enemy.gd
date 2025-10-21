@@ -121,14 +121,4 @@ func create_loot_window() -> LootWindow:
 	for item in inventory.items:
 		loot_window.add_item(item)
 	return loot_window
-#
-#func _on_loot_range_area_entered(_area: Area3D) -> void:
-	#if is_dead:
-		#player.show_loot_ui(inventory.create_loot_window(player.inventory))
-#
-#func _on_loot_range_area_exited(_area: Area3D) -> void:
-	#if is_dead:
-		#player.hide_loot_ui()
-		#if inventory.items.is_empty():
-			#$LootRange.set_deferred("monitoring", false)
 			

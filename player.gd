@@ -142,10 +142,10 @@ func shoot():
 func reload():
 	weapon._reload()
 	
-func show_loot_ui(ui : LootWindow):
+func show_loot_ui(new_inventory : Inventory, new_loot_window : LootWindow):
 	#Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	#maybe do this on tree_exited/tree_exiting signal to make sure it's called
-	$PlayerUI.add_loot_window(ui)
+	$PlayerUI.add_loot_window(inventory.create_loot_window(new_inventory), new_loot_window)
 	
 func hide_loot_ui():
 	$PlayerUI.reparent_loot_window()
