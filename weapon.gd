@@ -14,9 +14,10 @@ var bullet_scene := preload("res://bullet.tscn")
 var original_transform : Transform3D
 var cooldown : float = 0
 var cooldown_time : float = .25
-
+@warning_ignore_start("unused_signal")
 signal start_shooting
 signal stop_shooting
+@warning_ignore_restore("unused_signal")
 
 func _shoot():
 	pass

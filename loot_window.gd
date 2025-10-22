@@ -9,10 +9,13 @@ var label : Label
 
 func _ready() -> void:
 	EventBus.inventory_changed.connect(update_items)
-	current_inventory.new_item_added.connect(add_item)
 	label = find_child("Owner", true)
-	label.text = current_inventory.get_parent().name
-
+	if current_inventory != null:
+		current_inventory.new_item_added.connect(add_item)
+		label.text = current_inventory.get_parent().name
+	else:
+		label.text = "Player"
+		
 func add_item(item : Item):
 	var item_slot = load("res://item_slot.tscn").instantiate()
 	item_slot.current_inventory = current_inventory
