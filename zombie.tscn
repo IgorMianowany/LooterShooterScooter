@@ -1884,7 +1884,7 @@ size = Vector3(1.7235718, 1.5918274, 1)
 radius = 1.1488674
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jmu02"]
-radius = 1.7387695
+radius = 0.96533203
 height = 4.2001953
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eseir"]
@@ -1904,6 +1904,7 @@ script = ExtResource("2_eseir")
 [node name="character-l" type="Node3D" parent="." index="0"]
 
 [node name="root" type="Node3D" parent="character-l" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.05, 0)
 
 [node name="leg-left" type="MeshInstance3D" parent="character-l/root" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 1, 2.03489e-14)
@@ -1916,17 +1917,17 @@ mesh = SubResource("ArrayMesh_7nqyo")
 skeleton = NodePath("")
 
 [node name="torso" type="MeshInstance3D" parent="character-l/root" index="2"]
-transform = Transform3D(1, 0, 0, 0, 0.9995282, 0.030713167, 0, -0.030713167, 0.9995282, 0, 0.7, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 mesh = SubResource("ArrayMesh_lnshm")
 skeleton = NodePath("")
 
 [node name="arm-left" type="MeshInstance3D" parent="character-l/root/torso" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.9995282, -0.030713167, 0, 0.030713167, 0.9995282, 0.4, 1.1, -0.0999999)
+transform = Transform3D(1, 0, 0, 0, -1, -1.509958e-07, 0, 1.509958e-07, -1, 0.4, 1.1, -0.0999999)
 mesh = SubResource("ArrayMesh_x5rsa")
 skeleton = NodePath("")
 
 [node name="arm-right" type="MeshInstance3D" parent="character-l/root/torso" index="1"]
-transform = Transform3D(1, 0, 0, 0, 0.9995282, -0.030713167, 0, 0.030713167, 0.9995282, -0.4, 1.1, -0.0999999)
+transform = Transform3D(1, 0, 0, 0, -1, -1.509958e-07, 0, 1.509958e-07, -1, -0.4, 1.1, -0.0999999)
 mesh = SubResource("ArrayMesh_ogcpr")
 skeleton = NodePath("")
 
@@ -1940,15 +1941,11 @@ libraries = {
 &"": SubResource("AnimationLibrary_q5ypp")
 }
 
-[node name="Hurtbox" parent="." index="2"]
-visible = false
-
 [node name="CollisionShape3D" parent="Hurtbox" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.029693604, 0.57079184, 0)
 shape = SubResource("BoxShape3D_jmu02")
 
 [node name="CritHurtbox" parent="." index="3"]
-visible = false
 collision_layer = 0
 
 [node name="CollisionShape3D" parent="CritHurtbox" index="0"]
@@ -1956,24 +1953,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3424318, 0)
 shape = SubResource("SphereShape3D_eseir")
 
 [node name="RayCastHitbox" parent="." index="4"]
-visible = false
-collision_layer = 128
-collision_mask = 0
+visible = true
 monitoring = false
 
-[node name="CollisionShape3D" parent="RayCastHitbox" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.297154, 0)
+[node name="AfterDeathCollision" type="CollisionShape3D" parent="RayCastHitbox" index="0"]
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.06260228, -1.3593497)
+visible = false
 shape = SubResource("CapsuleShape3D_jmu02")
 
-[node name="PlayerDetectionRange" parent="." index="5"]
-visible = false
+[node name="CollisionShape3D" parent="RayCastHitbox" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.297154, 0)
+shape = SubResource("CapsuleShape3D_jmu02")
 
 [node name="DamageNumbersOrigin" parent="." index="6"]
 visible = false
 
 [node name="CollisionShape3D" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5307617, 0)
-visible = false
 shape = SubResource("CapsuleShape3D_eseir")
 
 [node name="CollisionShape3D" parent="LootRange" index="0"]

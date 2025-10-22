@@ -169,19 +169,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.259563, 0.40708852, -21.1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.160381, 0.8957143, -7.028288)
 
 [node name="Zombie10" parent="." instance=ExtResource("4_aqk2v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7740145, 0.8957143, 171.01546)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7840738, 0.8957143, 125.122665)
 
 [node name="Zombie11" parent="." instance=ExtResource("4_aqk2v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5465775, 0.8957143, 171.01546)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9884892, 0.8957143, 125.122665)
 
 [node name="Zombie12" parent="." instance=ExtResource("4_aqk2v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4070787, 0.8957143, 166.73628)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1510096, 0.8957143, 120.84349)
 
 [node name="Zombie13" parent="." instance=ExtResource("4_aqk2v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.899519, 0.89571476, 166.60133)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.457607, 0.89571476, 120.70854)
 
 [node name="Zombie14" parent="." instance=ExtResource("4_aqk2v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.54136276, 0.89571476, 172.63577)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.099451, 0.89571476, 126.74298)
 
 [node name="Zombie15" parent="." instance=ExtResource("4_aqk2v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4887505, 0.89571476, 173.92296)

@@ -1,9 +1,12 @@
 class_name PlayerUI
 extends Control
+
 var currently_targeted_enemy : Area3D
 var enemy : Enemy
 var hitmarker_timer : float = .2
 var is_mouse_swallowing_ui_open : bool = false
+var player_loot_window : LootWindow
+var new_loot_window : LootWindow
 
 func _ready():
 	EventBus.enemy_hit.connect(show_hitmarker)
@@ -49,11 +52,16 @@ func reparent_loot_window():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	remove_loot_window_if_exists()
 
-func add_loot_window(player_loot_window : LootWindow, new_loot_window : LootWindow):
-	is_mouse_swallowing_ui_open = true
-	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
-	$Inventories.add_child(player_loot_window)
-	$Inventories.add_child(new_loot_window)
+func add_loot_window(_player_loot_window : LootWindow, _new_loot_window : LootWindow):
+	if player_loot_window != null and new_loot_window != null:
+		is_mouse_swallowing_ui_open = true
+		Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+		$Inventories.add_child(player_loot_window)
+		$Inventories.add_child(new_loot_window)
+	
+func add_closest_loot_window(_player_loot_window : LootWindow, _new_loot_window : LootWindow):
+	player_loot_window = _player_loot_window
+	new_loot_window = _new_loot_window
 	
 func show_equipment(items : Array[Item]):
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED

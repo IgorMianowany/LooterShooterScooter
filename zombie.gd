@@ -15,6 +15,7 @@ func _physics_process(delta: float) -> void:
 	
 func _die():
 	super()
+	$RayCastHitbox/CollisionShape3D.transform = $RayCastHitbox/AfterDeathCollision.transform
 	$AnimationPlayer.play("die")
 	
 func take_damage(damage : float, is_crit : bool = false):

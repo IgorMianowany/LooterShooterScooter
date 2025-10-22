@@ -32,6 +32,7 @@ func _ready():
 	possible_loot.append(item2)
 	inventory.add_item(possible_loot.pick_random())
 	inventory._set_collision_shape_radius(3.518)
+	inventory.is_enemy_inventory = true
 	
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -60,7 +61,6 @@ func take_damage(damage : float, is_crit : bool = false):
 func _on_player_detection_range_area_entered(area: Area3D) -> void:
 	player_in_range = true
 	player = area.get_parent()
-
 
 func _on_player_detection_range_area_exited(_area: Area3D) -> void:
 	player_in_range = false
@@ -122,4 +122,6 @@ func create_loot_window() -> LootWindow:
 	for item in inventory.items:
 		loot_window.add_item(item)
 	return loot_window
+	
+
 			

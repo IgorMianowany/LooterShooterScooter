@@ -99,6 +99,8 @@ func _input(event: InputEvent) -> void:
 		weapon.visible = true
 	if event.is_action_pressed("open_equipment"):
 		show_equipment()
+	if event.is_action_pressed("interact"):
+		$PlayerUI.add_loot_window(null, null)
 	
 func dash():
 	dash_ready = false
@@ -145,7 +147,7 @@ func reload():
 func show_loot_ui(new_inventory : Inventory, new_loot_window : LootWindow):
 	#Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	#maybe do this on tree_exited/tree_exiting signal to make sure it's called
-	$PlayerUI.add_loot_window(inventory.create_loot_window(new_inventory), new_loot_window)
+	$PlayerUI.add_closest_loot_window(inventory.create_loot_window(new_inventory), new_loot_window)
 	
 func hide_loot_ui():
 	$PlayerUI.reparent_loot_window()
