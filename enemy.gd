@@ -123,5 +123,8 @@ func create_loot_window() -> LootWindow:
 		loot_window.add_item(item)
 	return loot_window
 	
+	
+func _change_outline(should_turn_outline_on : bool):
+	pass
 
 			

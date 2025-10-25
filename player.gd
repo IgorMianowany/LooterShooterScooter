@@ -19,6 +19,7 @@ var dash_ready : bool = true
 var is_mouse_swallowing_ui_open : bool = false
 var equipment : Array[Item] : get = get_equipment
 var inventory : Inventory
+var playerUI : PlayerUI
 
 @export var camera_controller : Camera3D
 @export var mouse_sensitivity : float = 0.15
@@ -30,13 +31,14 @@ func get_equipment() -> Array[Item]:
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	inventory = $Inventory
+	playerUI = $PlayerUI
 	
 func _exit():
 	get_tree().quit()
 	
 func _process(_delta: float) -> void:
-	$PlayerUI.set_ammo(weapon._get_current_magazine_size(), weapon._get_max_magazine_size(), weapon._get_ammo_reserve(), weapon.is_reloading)
-	is_mouse_swallowing_ui_open = $PlayerUI.is_mouse_swallowing_ui_open
+	playerUI.set_ammo(weapon._get_current_magazine_size(), weapon._get_max_magazine_size(), weapon._get_ammo_reserve(), weapon.is_reloading)
+	is_mouse_swallowing_ui_open = playerUI.is_mouse_swallowing_ui_open
 	
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -77,7 +79,8 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_released("shoot") and not is_mouse_swallowing_ui_open:
 		weapon.stop_shooting.emit()
 	
-	$PlayerUI.currently_targeted_enemy = $Camera3D/RayCast3D.get_collider()
+	playerUI.change_targeted_enemy($Camera3D/RayCast3D.get_collider())
+	#playerUI.currently_targeted_enemy = $Camera3D/RayCast3D.get_collider()
 	
 	update_camera(delta)
 	move_and_slide()
@@ -100,7 +103,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("open_equipment"):
 		show_equipment()
 	if event.is_action_pressed("interact"):
-		$PlayerUI.add_loot_window(null, null)
+		playerUI.add_loot_window(null, null)
 	
 func dash():
 	dash_ready = false
@@ -147,14 +150,14 @@ func reload():
 func show_loot_ui(new_inventory : Inventory, new_loot_window : LootWindow):
 	#Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	#maybe do this on tree_exited/tree_exiting signal to make sure it's called
-	$PlayerUI.add_closest_loot_window(inventory.create_loot_window(new_inventory), new_loot_window)
+	playerUI.add_closest_loot_window(inventory.create_loot_window(new_inventory), new_loot_window)
 	
 func hide_loot_ui():
-	$PlayerUI.reparent_loot_window()
+	playerUI.reparent_loot_window()
 	
 func show_equipment():
 	get_tree().paused = true
-	$PlayerUI.show_equipment($Inventory.items)
+	playerUI.show_equipment($Inventory.items)
 
 func modify_interact_in_range(modify_value : int):
-	$PlayerUI.modify_interact(modify_value)
+	playerUI.modify_interact(modify_value)

@@ -61,11 +61,17 @@ func _on_loot_range_area_entered(area: Area3D) -> void:
 	var player = area.get_parent() as Player
 	if can_open_inventory:
 		player.modify_interact_in_range(1)
+		var enemy = (get_parent() as Enemy)
+		if enemy != null:
+			enemy._change_outline(true)
 		player.show_loot_ui(self, create_loot_window(player.inventory))
 
 func _on_loot_range_area_exited(area: Area3D) -> void:
 	var player = area.get_parent() as Player
 	if can_open_inventory:
+		var enemy = (get_parent() as Enemy)
+		if enemy != null:
+			enemy._change_outline(true)
 		player.modify_interact_in_range(-1)
 	if items.size() == 0:
 		can_open_inventory = false

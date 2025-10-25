@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 	$InteractTooltip.visible = interacts > 0
 		
 	if currently_targeted_enemy != null:
-		enemy = currently_targeted_enemy.get_parent()
+		#enemy._change_outline(true)
 		$EnemyInfoContainer.visible = true
 		$EnemyInfoContainer/EnemyName.text = enemy.name
 		$EnemyInfoContainer/MarginContainer3/AspectRatioContainer/EnemyHealthBar.value = enemy.health
@@ -75,3 +75,11 @@ func show_equipment(items : Array[Item]):
 func modify_interact(modify_value : int):
 	interacts += modify_value
 	print(interacts)
+	
+func change_targeted_enemy(area : Area3D):
+	if currently_targeted_enemy != area:
+		currently_targeted_enemy = area
+		if area != null:
+			enemy = currently_targeted_enemy.get_parent()
+		else:
+			enemy._change_outline(false)

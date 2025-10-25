@@ -1,6 +1,8 @@
 class_name Zombie
 extends Enemy
 
+@export var outline_shader : Material = preload("res://materials/outline_material.tres")
+
 func _ready() -> void:
 	super()
 	speed = 300
@@ -37,3 +39,20 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		speed = 300
 		knockback_speed = 0
 		is_knocked_back = false
+		
+func _change_outline(should_turn_outline_on : bool):
+	if should_turn_outline_on:
+		($"character-l/root/leg-left" as MeshInstance3D).material_overlay = outline_shader
+		($"character-l/root/leg-right" as MeshInstance3D).material_overlay = outline_shader
+		($"character-l/root/torso" as MeshInstance3D).material_overlay = outline_shader
+		($"character-l/root/torso/arm-left" as MeshInstance3D).material_overlay = outline_shader
+		($"character-l/root/torso/arm-right" as MeshInstance3D).material_overlay = outline_shader
+		($"character-l/root/torso/head" as MeshInstance3D).material_overlay = outline_shader
+
+	else:
+		($"character-l/root/leg-left" as MeshInstance3D).material_overlay = null
+		($"character-l/root/leg-right" as MeshInstance3D).material_overlay = null
+		($"character-l/root/torso" as MeshInstance3D).material_overlay = null
+		($"character-l/root/torso/arm-left" as MeshInstance3D).material_overlay = null
+		($"character-l/root/torso/arm-right" as MeshInstance3D).material_overlay = null
+		($"character-l/root/torso/head" as MeshInstance3D).material_overlay = null

@@ -1,8 +1,9 @@
-[gd_scene load_steps=52 format=4 uid="uid://cq703l7u06dnl"]
+[gd_scene load_steps=53 format=4 uid="uid://cq703l7u06dnl"]
 
 [ext_resource type="PackedScene" uid="uid://43lpari5m4ea" path="res://enemy.tscn" id="1_roy8y"]
 [ext_resource type="Script" uid="uid://dtggahtoacnqc" path="res://zombie.gd" id="2_eseir"]
 [ext_resource type="Texture2D" uid="uid://binq7y83n7yp8" path="res://models/character_models/Textures/texture-l.png" id="2_jmu02"]
+[ext_resource type="Material" uid="uid://t76yb1bkb80q" path="res://materials/outline_material.tres" id="3_eseir"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8awoe"]
 resource_name = "texture-l"
@@ -1900,11 +1901,11 @@ axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 script = ExtResource("2_eseir")
+outline_shader = ExtResource("3_eseir")
 
 [node name="character-l" type="Node3D" parent="." index="0"]
 
 [node name="root" type="Node3D" parent="character-l" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.05, 0)
 
 [node name="leg-left" type="MeshInstance3D" parent="character-l/root" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 1, 2.03489e-14)
@@ -1922,12 +1923,12 @@ mesh = SubResource("ArrayMesh_lnshm")
 skeleton = NodePath("")
 
 [node name="arm-left" type="MeshInstance3D" parent="character-l/root/torso" index="0"]
-transform = Transform3D(1, 0, 0, 0, -1, -1.509958e-07, 0, 1.509958e-07, -1, 0.4, 1.1, -0.0999999)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 1.1, -0.0999999)
 mesh = SubResource("ArrayMesh_x5rsa")
 skeleton = NodePath("")
 
 [node name="arm-right" type="MeshInstance3D" parent="character-l/root/torso" index="1"]
-transform = Transform3D(1, 0, 0, 0, -1, -1.509958e-07, 0, 1.509958e-07, -1, -0.4, 1.1, -0.0999999)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 1.1, -0.0999999)
 mesh = SubResource("ArrayMesh_ogcpr")
 skeleton = NodePath("")
 
@@ -1940,6 +1941,7 @@ skeleton = NodePath("")
 libraries = {
 &"": SubResource("AnimationLibrary_q5ypp")
 }
+autoplay = "idle"
 
 [node name="CollisionShape3D" parent="Hurtbox" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.029693604, 0.57079184, 0)
