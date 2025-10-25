@@ -155,3 +155,6 @@ func hide_loot_ui():
 func show_equipment():
 	get_tree().paused = true
 	$PlayerUI.show_equipment($Inventory.items)
+
+func modify_interact_in_range(modify_value : int):
+	$PlayerUI.modify_interact(modify_value)

@@ -7,6 +7,7 @@ var hitmarker_timer : float = .2
 var is_mouse_swallowing_ui_open : bool = false
 var player_loot_window : LootWindow
 var new_loot_window : LootWindow
+var interacts : int = 0
 
 func _ready():
 	EventBus.enemy_hit.connect(show_hitmarker)
@@ -19,6 +20,7 @@ func set_ammo(current : int, max_ammo : int, reserve : int, is_reloading : bool)
 func _process(delta: float) -> void:
 	hitmarker_timer -= delta
 	$MarginContainer2/MarginContainer/Hitmarker.visible = hitmarker_timer > 0
+	$InteractTooltip.visible = interacts > 0
 		
 	if currently_targeted_enemy != null:
 		enemy = currently_targeted_enemy.get_parent()
@@ -69,3 +71,7 @@ func show_equipment(items : Array[Item]):
 	for item in items:
 		loot_window.add_item(item)
 	$Inventories.add_child(loot_window)
+	
+func modify_interact(modify_value : int):
+	interacts += modify_value
+	print(interacts)
