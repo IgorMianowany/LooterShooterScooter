@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bk033fbkludgc"]
+[gd_scene load_steps=11 format=3 uid="uid://bk033fbkludgc"]
 
 [ext_resource type="PackedScene" uid="uid://c3r7x5nnilava" path="res://player.tscn" id="1_6x0j6"]
 [ext_resource type="PackedScene" uid="uid://byelj2sntqw4q" path="res://game_manager.tscn" id="1_53m72"]
 [ext_resource type="Texture2D" uid="uid://cad8d4pap11a7" path="res://models/skybox/sky_20_2k.png" id="2_26tu4"]
 [ext_resource type="PackedScene" uid="uid://cnnhkjjd4v4nj" path="res://basic_obstacle.tscn" id="3_uepyh"]
+[ext_resource type="PackedScene" uid="uid://0fa73aetre3u" path="res://basic_wide_obstacle.tscn" id="5_bi0o0"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_26tu4"]
 size = Vector3(25, 1, 5000)
@@ -25,6 +26,7 @@ sky = SubResource("Sky_036b0")
 
 [node name="GameManager" parent="." node_paths=PackedStringArray("obstacles") instance=ExtResource("1_53m72")]
 obstacles = NodePath("../Obstacles")
+speed = 50.0
 
 [node name="Player" parent="." instance=ExtResource("1_6x0j6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.014423609, 0)
@@ -71,3 +73,9 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -0.0777545, 1.9403429, -30.96
 
 [node name="BasicObstacle8" parent="Obstacles" instance=ExtResource("3_uepyh")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 10.364999, 1.9403429, -17.845398)
+
+[node name="BasicObstacle9" parent="Obstacles" instance=ExtResource("3_uepyh")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -0.1540122, 1.9403415, -89.15243)
+
+[node name="BasicWideObstacle" parent="Obstacles" instance=ExtResource("5_bi0o0")]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, -128.17476)
