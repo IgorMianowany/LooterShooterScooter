@@ -20,6 +20,7 @@ var is_mouse_swallowing_ui_open : bool = false
 var equipment : Array[Item] : get = get_equipment
 var inventory : Inventory
 var playerUI : PlayerUI
+var z_movement_enabled : bool = true
 
 @export var camera_controller : Camera3D
 @export var mouse_sensitivity : float = 0.15
@@ -32,6 +33,7 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	inventory = $Inventory
 	playerUI = $PlayerUI
+	z_movement_enabled = get_parent().name != "RunnerLevelOne"
 	
 func _exit():
 	get_tree().quit()
@@ -62,6 +64,8 @@ func _physics_process(delta: float) -> void:
 	var input_direction = Input.get_vector("left", "right", "forward", "backward")
 	var direction := (transform.basis * Vector3(input_direction.x, 0, input_direction.y)).normalized()
 	var end_speed : float = speed + (speed * sprint_multi * int(is_sprinting))
+	if not z_movement_enabled:
+		direction.z = 0
 	if direction:
 		$AnimationPlayer.play("walk")
 		velocity.x = direction.x * end_speed
