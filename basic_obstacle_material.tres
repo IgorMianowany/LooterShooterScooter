@@ -1,7 +1,0 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://r61l2hxhov3w"]
-
-[resource]
-resource_local_to_scene = true
-albedo_color = Color(0.68498486, 9.385496e-06, 0.46084905, 1)
-stencil_flags = 2
-stencil_outline_thickness = 0.033

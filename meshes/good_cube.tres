@@ -1,0 +1,41 @@
+[gd_resource type="ArrayMesh" load_steps=3 format=4 uid="uid://braqgnj07ow82"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_twj7l"]
+resource_name = "Material"
+cull_mode = 2
+albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 1)
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_petk3"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAACAAYABQAGAAIAAAABAAIABQAHAAYABwAAAAYABAABAAAABwAEAAAAAwACAAEAAwAFAAIABAADAAEABwAFAAMABwADAAQA"),
+"lods": [1.9999614, PackedByteArray("AAABAAIAAwACAAEABAABAAAABAADAAEABAAAAAIAAwAFAAIABQAEAAIABAAFAAMA")],
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("/////wAAAAD///////8AAAAA/////wAA//8AAP//AAD//wAAAAAAAAAAAAD//wAAAAD//wAAAAAAAAAAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[resource]
+resource_name = "cube_Cube"
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"attribute_data": PackedByteArray("/5//f/+f/z//3/8//1//f/+f////X////1//P/8f/z//nwAA/18AAP/f/3//n/8//1//P/+f/7//X/+//x//f/9f/3//X/9//5//P/+f/3//X/8//1//v/+f/3//n/+/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAACAAoAAAALAAIADAAIAAEADAAJAAgABQANAAQABQAOAA0ADwAGABAADwAHAAYAEQASABMAEQAUABIAFQAWABcAFQADABYA"),
+"lods": [1.9999614, PackedByteArray("AAABAAIAAwABAAAAAwAAAAQABQADAAQAAwAGAAEAAwAHAAYABgAIAAEABgAJAAgA")],
+"material": SubResource("StandardMaterial3D_twj7l"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/////wAA4uj///////900QAA/////4f2//8AAAAAb9kAAP////9KwAAAAAD//3PR//8AAP//PqgAAAAA//8/qAAA/////0rAAAAAAP//dNEAAP//AADh6P///////4f2//8AAP//SsAAAP//AABv2QAAAAAAABr7AAAAAAAAk+H//wAAAACS4f//AAAAAG/Z////////c9H/////AAAa+///AAD//0rAAAAAAAAAGvv/////AAAa+wAA//8AAG/ZzVLmCs4vSgaDaJueBDUZRbn4xcgx0LP5GS9jPZxCGa+5+MbIMNC0+Rh1y9KcHn0XRQc4N/rK57r6ylDXsCefi58LTVgENRdFzS9LBgQ1rihFBzk3+spP1wQ1ryj6yuW6")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_petk3")

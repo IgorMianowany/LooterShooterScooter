@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://r61l2hxhov3w"]
+
+[ext_resource type="Material" uid="uid://t76yb1bkb80q" path="res://materials/outline_material.tres" id="1_eexhs"]
+
+[resource]
+resource_local_to_scene = true
+next_pass = ExtResource("1_eexhs")
+albedo_color = Color(0.68498486, 9.385496e-06, 0.46084905, 1)
+texture_filter = 1
+stencil_flags = 2
+stencil_outline_thickness = 0.033
