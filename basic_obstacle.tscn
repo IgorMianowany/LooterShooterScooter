@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://cnnhkjjd4v4nj"]
+
+[ext_resource type="Script" uid="uid://y2f2wawqquc6" path="res://basic_obstacle.gd" id="1_0csc1"]
+[ext_resource type="Script" uid="uid://baj3fxdsp6qc7" path="res://hurtbox.gd" id="1_roh71"]
+[ext_resource type="Script" uid="uid://erenfrs60nsh" path="res://hitbox.gd" id="2_0csc1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_b35it"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_0csc1"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ed4oe"]
+size = Vector3(1.279541, 1.1171265, 1.3863525)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0csc1"]
+size = Vector3(1.4984741, 1.2783203, 1.5986938)
+
+[node name="BasicObstacle" type="StaticBody3D"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+script = ExtResource("1_0csc1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_b35it")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConcavePolygonShape3D_0csc1")
+
+[node name="Hurtbox" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 256
+monitorable = false
+script = ExtResource("1_roh71")
+metadata/_custom_type_script = "uid://baj3fxdsp6qc7"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07662964, 0)
+shape = SubResource("BoxShape3D_ed4oe")
+
+[node name="Hitbox" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+script = ExtResource("2_0csc1")
+metadata/_custom_type_script = "uid://erenfrs60nsh"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.004547119, 0.13386005, -0.07168579)
+shape = SubResource("BoxShape3D_0csc1")
+debug_color = Color(0.9567608, 6.738305e-07, 0.5387989, 0.41960785)
+
+[connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]

@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://bk033fbkludgc"]
+
+[ext_resource type="PackedScene" uid="uid://c3r7x5nnilava" path="res://player.tscn" id="1_6x0j6"]
+[ext_resource type="PackedScene" uid="uid://byelj2sntqw4q" path="res://game_manager.tscn" id="1_53m72"]
+[ext_resource type="Texture2D" uid="uid://cad8d4pap11a7" path="res://models/skybox/sky_20_2k.png" id="2_26tu4"]
+[ext_resource type="PackedScene" uid="uid://cnnhkjjd4v4nj" path="res://basic_obstacle.tscn" id="3_uepyh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_26tu4"]
+size = Vector3(25, 1, 5000)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_6x0j6"]
+data = PackedVector3Array(-12.5, 0.5, 2500, 12.5, 0.5, 2500, -12.5, -0.5, 2500, 12.5, 0.5, 2500, 12.5, -0.5, 2500, -12.5, -0.5, 2500, 12.5, 0.5, -2500, -12.5, 0.5, -2500, 12.5, -0.5, -2500, -12.5, 0.5, -2500, -12.5, -0.5, -2500, 12.5, -0.5, -2500, 12.5, 0.5, 2500, 12.5, 0.5, -2500, 12.5, -0.5, 2500, 12.5, 0.5, -2500, 12.5, -0.5, -2500, 12.5, -0.5, 2500, -12.5, 0.5, -2500, -12.5, 0.5, 2500, -12.5, -0.5, -2500, -12.5, 0.5, 2500, -12.5, -0.5, 2500, -12.5, -0.5, -2500, 12.5, 0.5, 2500, -12.5, 0.5, 2500, 12.5, 0.5, -2500, -12.5, 0.5, 2500, -12.5, 0.5, -2500, 12.5, 0.5, -2500, -12.5, -0.5, 2500, 12.5, -0.5, 2500, -12.5, -0.5, -2500, 12.5, -0.5, 2500, 12.5, -0.5, -2500, -12.5, -0.5, -2500)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_uepyh"]
+panorama = ExtResource("2_26tu4")
+
+[sub_resource type="Sky" id="Sky_036b0"]
+sky_material = SubResource("PanoramaSkyMaterial_uepyh")
+
+[sub_resource type="Environment" id="Environment_53m72"]
+background_mode = 2
+sky = SubResource("Sky_036b0")
+
+[node name="RunnerLevelOne" type="Node3D"]
+
+[node name="GameManager" parent="." node_paths=PackedStringArray("obstacles") instance=ExtResource("1_53m72")]
+obstacles = NodePath("../Node3D")
+
+[node name="Player" parent="." instance=ExtResource("1_6x0j6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.014423609, 0)
+
+[node name="Runway" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5808563, -568.9445)
+mesh = SubResource("BoxMesh_26tu4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Runway"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Runway/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_6x0j6")
+debug_color = Color(0.8114795, 0.0028197882, 0.5541044, 0.41960785)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_53m72")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.560639, 0.82806, 0, -0.82806, -0.560639, 16, 27, -12)
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -53.01892)
+
+[node name="BasicObstacle" parent="Node3D" instance=ExtResource("3_uepyh")]
+transform = Transform3D(2.1512094, 0, 0, 0, 5, 0, 0, 0, 5, -3.3923273, 2.4456446, -22.436485)
+
+[node name="BasicObstacle2" parent="Node3D" instance=ExtResource("3_uepyh")]
+transform = Transform3D(2.1512094, 0, 0, 0, 5, 0, 0, 0, 5, 0.19446683, 2.4456446, -37.149315)
+
+[node name="BasicObstacle3" parent="Node3D" instance=ExtResource("3_uepyh")]
+transform = Transform3D(2.1512094, 0, 0, 0, 5, 0, 0, 0, 5, 6.1080627, 2.4456441, -51.520206)
+
+[node name="BasicObstacle4" parent="Node3D" instance=ExtResource("3_uepyh")]
+transform = Transform3D(15.162689, 0, 0, 0, 22.356968, 0, 0, 0, 27.108673, 0.30088997, 2.4456441, -100.13823)

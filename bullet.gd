@@ -14,7 +14,7 @@ func _ready() -> void:
 	direction = global_position.direction_to($Tip.global_position)
 	$Hitbox.bullet = self
 	#$Hitbox.damage = damage
-	$Hitbox.damage = 100
+	$Hitbox.damage = 10
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
