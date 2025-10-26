@@ -1,12 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cnnhkjjd4v4nj"]
+[gd_scene load_steps=8 format=3 uid="uid://cnnhkjjd4v4nj"]
 
 [ext_resource type="Script" uid="uid://y2f2wawqquc6" path="res://basic_obstacle.gd" id="1_0csc1"]
 [ext_resource type="Script" uid="uid://baj3fxdsp6qc7" path="res://hurtbox.gd" id="1_roh71"]
 [ext_resource type="Script" uid="uid://erenfrs60nsh" path="res://hitbox.gd" id="2_0csc1"]
-[ext_resource type="BoxMesh" uid="uid://4jhdom3kihhv" path="res://meshes/basic_obstacle.tres" id="2_ed4oe"]
-[ext_resource type="PackedScene" uid="uid://bg54ercsfewqm" path="res://cube.blend" id="5_wwh47"]
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_l3fxy"]
+[ext_resource type="ArrayMesh" uid="uid://braqgnj07ow82" path="res://meshes/good_cube.tres" id="2_wwh47"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_0csc1"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
@@ -18,16 +15,13 @@ size = Vector3(1.279541, 1.1171265, 1.3863525)
 size = Vector3(1.4984741, 1.2783203, 1.5986938)
 
 [node name="BasicObstacle" type="StaticBody3D"]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 script = ExtResource("1_0csc1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 cast_shadow = 0
-mesh = ExtResource("2_ed4oe")
+mesh = ExtResource("2_wwh47")
 skeleton = NodePath("")
-
-[node name="SecondCube" type="MeshInstance3D" parent="."]
-mesh = SubResource("ArrayMesh_l3fxy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConcavePolygonShape3D_0csc1")
@@ -55,9 +49,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.004547119, 0.13386005, -0.0
 shape = SubResource("BoxShape3D_0csc1")
 debug_color = Color(0.9567608, 6.738305e-07, 0.5387989, 0.41960785)
 
-[node name="cube" parent="." instance=ExtResource("5_wwh47")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.8683506, 0, -2.0388803)
-
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]
-
-[editable path="cube"]
