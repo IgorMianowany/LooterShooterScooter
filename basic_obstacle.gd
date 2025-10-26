@@ -15,7 +15,7 @@ func take_damage(damage : float, is_crit : bool):
 	health -= damage
 	if is_crit:
 		health -= damage
-	mesh_material.albedo_color.r = (health + 75)/255
+	mesh_material.albedo_color.r = (health + 75)/255 # color is a value from 0 to 1, which is the value of RGB divided by max (255)
 	if health <= 0:
 		queue_free()
 		
