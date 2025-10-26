@@ -49,13 +49,13 @@ transform = Transform3D(1, 0, 0, 0, -0.560639, 0.82806, 0, -0.82806, -0.560639, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -53.01892)
 
 [node name="BasicObstacle" parent="Node3D" instance=ExtResource("3_uepyh")]
-transform = Transform3D(2.1512094, 0, 0, 0, 5, 0, 0, 0, 5, -3.3923273, 2.4456446, -22.436485)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -4.3143015, 4.255514, -6.4198837)
 
 [node name="BasicObstacle2" parent="Node3D" instance=ExtResource("3_uepyh")]
-transform = Transform3D(2.1512094, 0, 0, 0, 5, 0, 0, 0, 5, 0.19446683, 2.4456446, -37.149315)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 3.6856985, 4.255514, 9.580116)
 
 [node name="BasicObstacle3" parent="Node3D" instance=ExtResource("3_uepyh")]
-transform = Transform3D(2.1512094, 0, 0, 0, 5, 0, 0, 0, 5, 6.1080627, 2.4456441, -51.520206)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -6.026211, 4.255514, 21.672163)
 
 [node name="BasicObstacle4" parent="Node3D" instance=ExtResource("3_uepyh")]
-transform = Transform3D(15.162689, 0, 0, 0, 22.356968, 0, 0, 0, 27.108673, 0.30088997, 2.4456441, -100.13823)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 4.4165425, 4.255514, 34.79072)
