@@ -1,22 +1,54 @@
-[gd_scene load_steps=3 format=3 uid="uid://0fa73aetre3u"]
+[gd_scene load_steps=8 format=3 uid="uid://0fa73aetre3u"]
 
-[ext_resource type="PackedScene" uid="uid://cnnhkjjd4v4nj" path="res://basic_obstacle.tscn" id="1_edkyo"]
+[ext_resource type="Script" uid="uid://y2f2wawqquc6" path="res://basic_obstacle.gd" id="1_lv1sd"]
+[ext_resource type="ArrayMesh" uid="uid://braqgnj07ow82" path="res://meshes/good_cube.tres" id="2_st4dj"]
+[ext_resource type="Script" uid="uid://baj3fxdsp6qc7" path="res://hurtbox.gd" id="3_i17cr"]
+[ext_resource type="Script" uid="uid://erenfrs60nsh" path="res://hitbox.gd" id="4_yu6wa"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_edkyo"]
 size = Vector3(1.2494965, 2.0061035, 0.33111572)
 
-[node name="BasicWideObstacle" instance=ExtResource("1_edkyo")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_lv1sd"]
+size = Vector3(0.26307678, 0.8399658, 0.06604004)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_st4dj"]
+size = Vector3(0.2680664, 0.8565674, 0.054748535)
+
+[node name="BasicWideObstacle" type="StaticBody3D"]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+script = ExtResource("1_lv1sd")
 
-[node name="MeshInstance3D" parent="." index="0"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.125, 0, 0, 0, 0.199, 0, 0, 0, 0.03, 0, 0, 0)
+cast_shadow = 0
+mesh = ExtResource("2_st4dj")
+skeleton = NodePath("")
 
-[node name="CollisionShape3D" parent="." index="1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.19999997, 0, 0, 0, 0.19999997, 0, 0, 0, 0.19999997, -0.00031280518, -0.0011962836, -0.002423098)
 shape = SubResource("BoxShape3D_edkyo")
 
-[node name="CollisionShape3D" parent="Hurtbox" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00033569336, -0.13618469, -0.00035601377)
+[node name="Hurtbox" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 256
+monitorable = false
+script = ExtResource("3_i17cr")
+metadata/_custom_type_script = "uid://baj3fxdsp6qc7"
 
-[node name="CollisionShape3D" parent="Hitbox" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0030076408, -0.14955668, -0.0010898522)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0006647539, -0.21620178, 0.00080366124)
+shape = SubResource("BoxShape3D_lv1sd")
+
+[node name="Hitbox" type="Area3D" parent="."]
+collision_layer = 1024
+collision_mask = 0
+monitoring = false
+script = ExtResource("4_yu6wa")
+metadata/_custom_type_script = "uid://erenfrs60nsh"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0021192932, -0.221273, 0.0025319098)
+shape = SubResource("BoxShape3D_st4dj")
+debug_color = Color(0.9567608, 6.738305e-07, 0.5387989, 0.41960785)
+
+[connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]

@@ -6,7 +6,7 @@ var hits : int = 0
 var max_hits : int = 1
 var enemies_already_hit : Array[Enemy]
 var bullet : Bullet
-
+@warning_ignore("unused_signal")
 signal hit
 
 func _process(_delta: float) -> void:

@@ -7,7 +7,7 @@ const TILT_UPPER_LIMIT := deg_to_rad(90.0)
 var speed : float = 15
 var sprint_multi : float = 1.5
 var is_sprinting : bool = false
-var jump_velocity = 20
+var jump_velocity = 15
 var mouse_input : bool = false
 var mouse_rotation : Vector3
 var rotation_input : float
@@ -22,6 +22,9 @@ var inventory : Inventory
 var playerUI : PlayerUI
 var z_movement_enabled : bool = true
 var health : float = 100
+
+@onready var normal_collision_shape : Shape3D = $Hurtbox/CollisionShape3D.shape
+@onready var crouch_collision_shape : Shape3D = $CrouchCollision.shape
 
 @export var camera_controller : Camera3D
 @export var mouse_sensitivity : float = 0.15
@@ -97,20 +100,24 @@ func _input(event: InputEvent) -> void:
 		return
 	if event.is_action_pressed("reload"):
 		reload()
-	if event.is_action_pressed("sprint") and not is_on_floor() and dash_ready:
+	elif event.is_action_pressed("sprint") and not is_on_floor() and dash_ready:
 		dash()
-	if event.is_action_pressed("switch_weapon_1"):
+	elif event.is_action_pressed("switch_weapon_1"):
 		weapon.visible = false
 		weapon = $Camera3D/WeaponsBackpack.weapon_1
 		weapon.visible = true
-	if event.is_action_pressed("switch_weapon_2"):
+	elif event.is_action_pressed("switch_weapon_2"):
 		weapon.visible = false
 		weapon = $Camera3D/WeaponsBackpack.weapon_2
 		weapon.visible = true
-	if event.is_action_pressed("open_equipment"):
+	elif event.is_action_pressed("open_equipment"):
 		show_equipment()
-	if event.is_action_pressed("interact"):
+	elif event.is_action_pressed("interact"):
 		playerUI.add_loot_window(null, null)
+	elif event.is_action_pressed("crouch"):
+		crouch(true)
+	elif event.is_action_released("crouch"):
+		crouch(false)
 	
 func dash():
 	dash_ready = false
@@ -174,3 +181,15 @@ func take_damage(damage : float, _is_crit : bool):
 	$PlayerUI.healthbar.value = health
 	if health <= 0:
 		queue_free()
+
+func crouch(should_crouch : bool):
+	if should_crouch:
+		$Hurtbox/CollisionShape3D.shape = crouch_collision_shape
+		$NormalCollision.disabled = true
+		$CrouchCollision.disabled = false
+		$Camera3D.position.y -= 1
+	else:
+		$Hurtbox/CollisionShape3D.shape = normal_collision_shape
+		$NormalCollision.disabled = false
+		$CrouchCollision.disabled = true
+		$Camera3D.position.y += 1

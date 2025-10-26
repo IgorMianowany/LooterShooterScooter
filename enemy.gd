@@ -124,7 +124,7 @@ func create_loot_window() -> LootWindow:
 	return loot_window
 	
 	
-func _change_outline(should_turn_outline_on : bool):
+func _change_outline(_should_turn_outline_on : bool):
 	pass
 
 			

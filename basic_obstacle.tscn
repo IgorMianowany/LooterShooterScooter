@@ -9,10 +9,10 @@
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ed4oe"]
-size = Vector3(0.25457764, 0.6914978, 0.058815733)
+size = Vector3(1.0685272, 1.0412827, 1.1027167)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0csc1"]
-size = Vector3(0.26642752, 0.7114868, 0.057806153)
+size = Vector3(1.0669142, 1.0412903, 1.2471737)
 
 [node name="BasicObstacle" type="StaticBody3D"]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
@@ -35,7 +35,7 @@ script = ExtResource("1_roh71")
 metadata/_custom_type_script = "uid://baj3fxdsp6qc7"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07662964, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.019615173, 0.0144844055, -0.009188533)
 shape = SubResource("BoxShape3D_ed4oe")
 
 [node name="Hitbox" type="Area3D" parent="."]
@@ -46,7 +46,7 @@ script = ExtResource("2_0csc1")
 metadata/_custom_type_script = "uid://erenfrs60nsh"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.004547119, 0.13386005, -0.07168579)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00923489, -0.031041682, -0.016458333)
 shape = SubResource("BoxShape3D_0csc1")
 debug_color = Color(0.9567608, 6.738305e-07, 0.5387989, 0.41960785)
 

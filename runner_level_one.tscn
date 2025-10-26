@@ -26,7 +26,7 @@ sky = SubResource("Sky_036b0")
 
 [node name="GameManager" parent="." node_paths=PackedStringArray("obstacles") instance=ExtResource("1_53m72")]
 obstacles = NodePath("../Obstacles")
-speed = 50.0
+speed = 15.0
 
 [node name="Player" parent="." instance=ExtResource("1_6x0j6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.014423609, 0)
