@@ -8,6 +8,7 @@ var mesh_material : StandardMaterial3D = preload("res://materials/basic_obstacle
 func _ready() -> void:
 	#mesh_instance.material_overlay = mesh_material
 	mesh_instance.material_overlay = mesh_material
+	$Hitbox.hit.connect(on_hit)
 
 func _process(_delta: float) -> void:
 	pass
@@ -19,4 +20,6 @@ func take_damage(damage : float, is_crit : bool):
 	mesh_material.albedo_color.r = (health + 75)/255 # color is a value from 0 to 1, which is the value of RGB divided by max (255)
 	if health <= 0:
 		queue_free()
-		
+
+func on_hit():
+	queue_free()

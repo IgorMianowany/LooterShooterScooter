@@ -24,7 +24,7 @@ sky = SubResource("Sky_036b0")
 [node name="RunnerLevelOne" type="Node3D"]
 
 [node name="GameManager" parent="." node_paths=PackedStringArray("obstacles") instance=ExtResource("1_53m72")]
-obstacles = NodePath("../Node3D")
+obstacles = NodePath("../Obstacles")
 
 [node name="Player" parent="." instance=ExtResource("1_6x0j6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.014423609, 0)
@@ -45,17 +45,29 @@ environment = SubResource("Environment_53m72")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.560639, 0.82806, 0, -0.82806, -0.560639, 16, 27, -12)
 
-[node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -53.01892)
+[node name="Obstacles" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28372288, 0, -95.35866)
 
-[node name="BasicObstacle" parent="Node3D" instance=ExtResource("3_uepyh")]
+[node name="BasicObstacle" parent="Obstacles" instance=ExtResource("3_uepyh")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -4.3143015, 4.255514, -6.4198837)
 
-[node name="BasicObstacle2" parent="Node3D" instance=ExtResource("3_uepyh")]
+[node name="BasicObstacle2" parent="Obstacles" instance=ExtResource("3_uepyh")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 3.6856985, 4.255514, 9.580116)
 
-[node name="BasicObstacle3" parent="Node3D" instance=ExtResource("3_uepyh")]
+[node name="BasicObstacle3" parent="Obstacles" instance=ExtResource("3_uepyh")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -6.026211, 4.255514, 21.672163)
 
-[node name="BasicObstacle4" parent="Node3D" instance=ExtResource("3_uepyh")]
+[node name="BasicObstacle4" parent="Obstacles" instance=ExtResource("3_uepyh")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 4.4165425, 4.255514, 34.79072)
+
+[node name="BasicObstacle5" parent="Obstacles" instance=ExtResource("3_uepyh")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 1.6341548, 1.9403429, -59.056015)
+
+[node name="BasicObstacle6" parent="Obstacles" instance=ExtResource("3_uepyh")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 9.634155, 1.9403429, -43.056015)
+
+[node name="BasicObstacle7" parent="Obstacles" instance=ExtResource("3_uepyh")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -0.0777545, 1.9403429, -30.963959)
+
+[node name="BasicObstacle8" parent="Obstacles" instance=ExtResource("3_uepyh")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 10.364999, 1.9403429, -17.845398)

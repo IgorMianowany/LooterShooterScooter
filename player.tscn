@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3r7x5nnilava"]
+[gd_scene load_steps=12 format=3 uid="uid://c3r7x5nnilava"]
 
 [ext_resource type="PackedScene" uid="uid://cb7jkmm5jny8i" path="res://models/character_models/character-a.glb" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://xkheiw2w0x41" path="res://player.gd" id="2_onrkg"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bhwpngou3qpga" path="res://assault_rifle.tscn" id="5_1jxqw"]
 [ext_resource type="PackedScene" uid="uid://t218voefpyow" path="res://pistol.tscn" id="5_2hs0m"]
 [ext_resource type="PackedScene" uid="uid://b4youdj4xpnb3" path="res://inventory.tscn" id="7_1jxqw"]
+[ext_resource type="Script" uid="uid://baj3fxdsp6qc7" path="res://hurtbox.gd" id="8_dw050"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
 radius = 0.966793
@@ -14,6 +15,9 @@ height = 3.0056
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_sweqy"]
 radius = 0.7887576
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b26j0"]
+size = Vector3(1.0104599, 2.2895508, 1.8325195)
 
 [node name="Player" node_paths=PackedStringArray("camera_controller", "weapon") instance=ExtResource("1_4flbx")]
 collision_layer = 0
@@ -77,3 +81,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6401591, 0)
 shape = SubResource("SphereShape3D_sweqy")
 
 [node name="Inventory" parent="." index="6" instance=ExtResource("7_1jxqw")]
+
+[node name="Hurtbox" type="Area3D" parent="." index="7"]
+collision_layer = 0
+collision_mask = 1024
+monitorable = false
+script = ExtResource("8_dw050")
+metadata/_custom_type_script = "uid://baj3fxdsp6qc7"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10494614, 1.522422, -0.41625977)
+shape = SubResource("BoxShape3D_b26j0")
+
+[connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]

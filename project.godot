@@ -142,6 +142,8 @@ interact={
 3d_physics/layer_8="RayCast"
 3d_physics/layer_9="hitbox"
 3d_physics/layer_10="hurtbox"
+3d_physics/layer_11="PlayerHitbox"
+3d_physics/layer_12="PlayerHurtbox"
 
 [shader_globals]
 

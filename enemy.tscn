@@ -22,7 +22,7 @@ visible = false
 
 [node name="CritHurtbox" type="Area3D" parent="."]
 visible = false
-collision_layer = 256
+collision_layer = 0
 collision_mask = 256
 monitorable = false
 script = ExtResource("2_4gyqm")

@@ -8,6 +8,7 @@ var is_mouse_swallowing_ui_open : bool = false
 var player_loot_window : LootWindow
 var new_loot_window : LootWindow
 var interacts : int = 0
+@onready var healthbar = $MarginContainer3/PlayerHealthBar
 
 func _ready():
 	EventBus.enemy_hit.connect(show_hitmarker)

@@ -21,6 +21,7 @@ var equipment : Array[Item] : get = get_equipment
 var inventory : Inventory
 var playerUI : PlayerUI
 var z_movement_enabled : bool = true
+var health : float = 100
 
 @export var camera_controller : Camera3D
 @export var mouse_sensitivity : float = 0.15
@@ -34,6 +35,8 @@ func _ready():
 	inventory = $Inventory
 	playerUI = $PlayerUI
 	z_movement_enabled = get_parent().name != "RunnerLevelOne"
+	$PlayerUI.healthbar.value = health 
+	$PlayerUI.healthbar.max_value = health 
 	
 func _exit():
 	get_tree().quit()
@@ -165,3 +168,9 @@ func show_equipment():
 
 func modify_interact_in_range(modify_value : int):
 	playerUI.modify_interact(modify_value)
+	
+func take_damage(damage : float, _is_crit : bool):
+	health -= damage
+	$PlayerUI.healthbar.value = health
+	if health <= 0:
+		queue_free()

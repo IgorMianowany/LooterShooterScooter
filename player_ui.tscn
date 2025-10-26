@@ -129,3 +129,23 @@ offset_bottom = 70.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Press 'e' to interact"
+
+[node name="MarginContainer3" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -65.0
+offset_right = 235.0
+grow_vertical = 0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_bottom = 25
+
+[node name="PlayerHealthBar" type="TextureProgressBar" parent="MarginContainer3"]
+custom_minimum_size = Vector2(100, 25)
+layout_mode = 2
+theme = SubResource("Theme_654h1")
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("2_pc08v")
+texture_progress = ExtResource("2_654h1")
