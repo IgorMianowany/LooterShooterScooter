@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c3r7x5nnilava"]
+[gd_scene load_steps=15 format=3 uid="uid://c3r7x5nnilava"]
 
 [ext_resource type="PackedScene" uid="uid://cb7jkmm5jny8i" path="res://models/character_models/character-a.glb" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://xkheiw2w0x41" path="res://player.gd" id="2_onrkg"]
@@ -21,6 +21,12 @@ radius = 0.7887576
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b26j0"]
 size = Vector3(1.0104599, 2.2895508, 1.8325195)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dw050"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_b26j0"]
+material = SubResource("StandardMaterial3D_dw050")
 
 [node name="Player" node_paths=PackedStringArray("camera_controller", "weapon") instance=ExtResource("1_4flbx")]
 collision_layer = 0
@@ -55,8 +61,8 @@ shape = SubResource("BoxShape3D_dw050")
 disabled = true
 
 [node name="Camera3D" type="Camera3D" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, -0.40251)
-cull_mask = 1048319
+process_mode = 4
+transform = Transform3D(-4.371139e-08, -0.5, 0.8660254, 0, 0.8660254, 0.5, -1, 2.1855694e-08, -3.7855173e-08, 10.824023, 10.206766, 0)
 
 [node name="WeaponsBackpack" type="Node3D" parent="Camera3D" index="0" node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.265474, -0.576243, -0.394412)
@@ -101,5 +107,15 @@ metadata/_custom_type_script = "uid://baj3fxdsp6qc7"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10494614, 1.522422, -0.41625977)
 shape = SubResource("BoxShape3D_b26j0")
+
+[node name="Cursor" type="MeshInstance3D" parent="." index="9"]
+transform = Transform3D(0.58829284, 0, 0, 0, 0.58829284, 0, 0, 0, 0.58829284, 0, 1.4057884, -10.476442)
+mesh = SubResource("SphereMesh_b26j0")
+
+[node name="CameraRig" type="Marker3D" parent="." index="10"]
+
+[node name="Camera" type="Camera3D" parent="CameraRig" index="0"]
+transform = Transform3D(0.7071068, 0.5, -0.5, 0, 0.7071068, 0.70710677, 0.7071068, -0.5, 0.5, -5, 8, 5)
+current = true
 
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]

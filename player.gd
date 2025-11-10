@@ -22,9 +22,14 @@ var inventory : Inventory
 var playerUI : PlayerUI
 var z_movement_enabled : bool = true
 var health : float = 100
+var is_isometric : bool = true
+var camera_rotation_speed : float = 200
 
 @onready var normal_collision_shape : Shape3D = $Hurtbox/CollisionShape3D.shape
 @onready var crouch_collision_shape : Shape3D = $CrouchCollision.shape
+@onready var camera = $CameraRig/Camera
+@onready var camera_rig = $CameraRig
+@onready var cursor = $Cursor
 
 @export var camera_controller : Camera3D
 @export var mouse_sensitivity : float = 0.15
@@ -34,10 +39,18 @@ func get_equipment() -> Array[Item]:
 	return PlayerInfo.equipment
 
 func _ready():
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	##NEW CODE
+	camera_rig.set_as_top_level(true)
+	cursor.set_as_top_level(true)
+	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	
+	
+	
+	## OLD CODE:
+	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	inventory = $Inventory
 	playerUI = $PlayerUI
-	z_movement_enabled = get_parent().name != "RunnerLevelOne"
+	#z_movement_enabled = get_parent().name != "RunnerLevelOne"
 	$PlayerUI.healthbar.value = health 
 	$PlayerUI.healthbar.max_value = health 
 	
@@ -92,6 +105,7 @@ func _physics_process(delta: float) -> void:
 	playerUI.change_targeted_enemy($Camera3D/RayCast3D.get_collider())
 	#playerUI.currently_targeted_enemy = $Camera3D/RayCast3D.get_collider()
 	
+	rotate_camera(delta)
 	update_camera(delta)
 	move_and_slide()
 	
@@ -139,7 +153,18 @@ func _unhandled_input(event):
 		_exit()
 		#pass
 
+func rotate_camera(delta):
+	if Input.is_action_pressed("rotate_camera_clockwise"):
+		camera_rig.rotate_y(deg_to_rad(-camera_rotation * delta))
+	if Input.is_action_pressed("rotate_camera_counterclockwise"):
+		camera_rig.rotate_y(deg_to_rad(camera_rotation * delta))
+		
 func update_camera(delta):
+	var player_pos = global_transform.origin
+	camera_rig.global_transform.origin = player_pos
+	
+	if (is_isometric):
+		return
 	mouse_rotation.x += tilt_input * delta
 	mouse_rotation.x = clamp(mouse_rotation.x, TILT_LOWER_LIMIT, TILT_UPPER_LIMIT)
 	mouse_rotation.y += rotation_input * delta
@@ -154,6 +179,22 @@ func update_camera(delta):
 	
 	rotation_input = 0.0
 	tilt_input = 0.0
+	
+func look_at_cursor():
+	var player_pos = global_transform.origin
+	var dropPlane = Plane(Vector3(0, 1, 0), player_pos.y)
+	
+	var ray_length = 1000
+	var mouse_pos = get_viewport().get_mouse_position()
+	var from = camera.project_ray_origin(mouse_pos)
+	var to = from + camera.project_ray_normal(mouse_pos) * ray_length
+	var cursor_pos = dropPlane.intersects_ray(from, to)
+	
+	cursor.global_transform.origin = cursor_pos + Vector3(0, 1, 0)
+	
+	look_at(cursor_pos, Vector3.UP)
+	
+	
 	
 func shoot():
 	weapon._shoot()

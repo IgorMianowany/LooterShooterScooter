@@ -26,13 +26,12 @@ sky = SubResource("Sky_036b0")
 
 [node name="GameManager" parent="." node_paths=PackedStringArray("obstacles") instance=ExtResource("1_53m72")]
 obstacles = NodePath("../Obstacles")
-speed = 15.0
 
 [node name="Player" parent="." instance=ExtResource("1_6x0j6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.014423609, 0)
 
 [node name="Runway" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5808563, -568.9445)
+transform = Transform3D(2.265904, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5808563, -568.9445)
 mesh = SubResource("BoxMesh_26tu4")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Runway"]
